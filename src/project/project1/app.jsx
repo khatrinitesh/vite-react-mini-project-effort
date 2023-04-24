@@ -8,6 +8,9 @@ const Service = React.lazy(() => import('./pages/service'));
 const Contact = React.lazy(() => import('./pages/contact'));
 const Error = React.lazy(() => import('./pages/error'));
 
+
+// BELOW LIBRARY 
+import 'semantic-ui-css/semantic.min.css'
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 

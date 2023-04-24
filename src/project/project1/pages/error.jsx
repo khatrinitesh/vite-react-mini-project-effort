@@ -10,9 +10,9 @@ export default function Error() {
     nav('/')
   }
   return (
-    <div className='content'>
-      <Banner bannerTitle="Error" bannerDesc="Lorem Ipsum"/>
-      <button onClick={btnBack}>Return homepage</button>
+    <div className='error_content'>
+      <Banner   bannerTitle="Oops" bannerDesc="We couldn't find the page you were looking for. Here'san adorable kitten instead!"/>
+      <button onClick={btnBack} className='btn btn-danger'>Go Back</button>
     </div>
   )
 }

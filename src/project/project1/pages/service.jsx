@@ -1,5 +1,8 @@
 import React,{useState,useEffect,useRef, useReducer} from 'react';
 import Banner from '../components/banner';
+import axios from 'axios';
+import { inputAdornmentClasses } from '@mui/material';
+
 
 export default function Service() {
 
@@ -51,16 +54,16 @@ export default function Service() {
     fetchData();
   },[])
 
-  if(loading){
-    return(
-      <div>Loading...</div>
-    )
-  }
-  if(error){
-    return(
-      <div>{error}</div>
-    )
-  }
+  // if(loading){
+  //   return(
+  //     <div>Loading...</div>
+  //   )
+  // }
+  // if(error){
+  //   return(
+  //     <div>{error}</div>
+  //   )
+  // }
   return (
     <div className='content'>
       <Banner bannerTitle="Service" bannerDesc="Lorem Ipsum"/>
@@ -721,38 +724,233 @@ export default function Service() {
 //   )
 // }
 
+// function Example(){
+//   const tasks = [
+//     {
+//       taskId : 1,
+//       taskName : 'Clean the bathroom',
+//       taskStatus: 'Complete'
+//     },
+//     {
+//       taskId : 2,
+//       taskName : 'Learn filtering data in React',
+//       taskStatus: 'To do'
+//     },
+//     {
+//       taskId : 3,
+//       taskName : 'Fix the bug on React project',
+//       taskStatus: 'To do'
+//     },
+//     {
+//       taskId : 4,
+//       taskName : 'Fix the car',
+//       taskStatus: 'Complete'
+//     }
+//   ]
+//   return(
+//     <>
+//      <ul className='list-unstyed w-100 bg-primary text-white p-5'>
+//       {tasks.filter((val) => val.taskStatus === 'To do').map((val) => {
+//         return(
+//           <li key={val.taskName}>{val.taskId} <br/>{val.taskName} <br/>{val.taskStatus}</li>
+//         )
+//       })}
+//      </ul>
+//     </>
+//   )
+// }
+
+// function Example(){
+//   return(
+//     <>
+//      {Records && Records.map((val) => {
+//       return(
+//         <div key={val.id}>
+//          {val.title}
+
+//          {Records.tech.map((data) => {
+//             return(
+//               <div>
+//                 {data.name}
+//               </div>
+//             )
+//          })}
+//         </div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+
+// function Example(){
+//   const [record,setRecord] = useState([]);
+
+//   useEffect(() => {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//     .then(response => response.json())
+//     .then((data) => setRecord(data))
+//     .catch(err => console.log(err))
+//   },[])
+//   return(
+//     <><ul>
+//             {record.map((val,index) => {
+//               return(
+//                 <li key={index}>
+//                   {val.username}
+//                 </li>
+//               )
+//             })}</ul>
+
+//     </>
+//   )
+// }
+
+// function Example(){
+//   const [todo,setTodo] = useState([]);
+
+//   useEffect(() => {
+//     getData();
+//   },[])
+
+//   const getData = async () => {
+//     const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+//     .then((response) => response.json())
+//     setTodo(response);
+//   }
+//   return(
+//     <>
+//      {todo && todo.slice(0,1).map((val) => {
+//       return(
+//         <div>{val.title} - <strong>{val.userId}</strong></div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+
+// function Example(){
+
+//   const [data,setData] = useState([]);
+
+//   useEffect(() => {
+//     axios.get('http://localhost:3000/users')
+//     .then(res => setData(res.data))
+//     .catch(err => console.log(err));
+//   })
+//   return(
+//     <>
+//      <table>
+//       <thead>
+//         <tr>
+//           <th>ID</th>
+//           <th>Name</th>
+//           <th>Email</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//             {data.map((d,i) => {
+//               return(
+//                 <tr key={i}>
+//                   <td>{d.id}</td>
+//                   <td>{d.name}</td>
+//                   <td>{d.email}</td>
+//                 </tr>
+//               )
+//             })}
+//       </tbody>
+//      </table>
+//     </>
+//   )
+// }
+
+// function Example(){
+
+//   const columns = [
+//     {
+//       name:'Name',
+//       selector:row => row.name
+//     },
+
+//     {
+//       name:'Email',
+//       selector:row => row.email
+//     },
+
+//     {
+//       name:'Age',
+//       selector:row => row.age
+//     },
+//   ]
+
+//   const data = [
+//     {
+//       id:1,
+//       name:'nitesh',
+//       email:'xyz@gmail.com',
+//       age:34,
+//     },
+//     {
+//       id:2,
+//       name:'sameet',
+//       email:'sameet@gmail.com',
+//       age:41,
+//     },
+//     {
+//       id:3,
+//       name:'manisha',
+//       email:'manisha@gmail.com',
+//       age:43,
+//     },
+//   ]
+
+//   return(
+//     <>
+//     <Datatable columns={columns}/>
+//     </>
+//   )
+// }
+
+// function Example(){
+
+//   const myArray = ['apple', 'banana', 'orange'];
+//   const myList = myArray.map((item) => <p>{item}</p>)
+//   return(
+//     <>
+//       {myList}
+//     </>
+//   )
+// }
+// function Example(){
+//   return(
+//     <>
+//      {name} - {age} 
+//     </>
+//   )
+// }
+// export const name = "Jesse"
+// export const age = 40
+
 function Example(){
-  const tasks = [
-    {
-      taskId : 1,
-      taskName : 'Clean the bathroom',
-      taskStatus: 'Complete'
-    },
-    {
-      taskId : 2,
-      taskName : 'Learn filtering data in React',
-      taskStatus: 'To do'
-    },
-    {
-      taskId : 3,
-      taskName : 'Fix the bug on React project',
-      taskStatus: 'To do'
-    },
-    {
-      taskId : 4,
-      taskName : 'Fix the car',
-      taskStatus: 'Complete'
-    }
-  ]
+  let authenticated = true;
+
+  if (authenticated) {
+    return renderApp();
+  } else {
+    return renderLogin();
+  }
+}
+
+function renderApp(){
   return(
     <>
-     <ul className='list-unstyed w-100 bg-primary text-white p-5'>
-      {tasks.filter((val) => val.taskStatus === 'To do').map((val) => {
-        return(
-          <li key={val.taskName}>{val.taskId} <br/>{val.taskName} <br/>{val.taskStatus}</li>
-        )
-      })}
-     </ul>
+     renderApp
+    </>
+  )
+}
+function renderLogin(){
+  return(
+    <>
+     renderLogin
     </>
   )
 }
