@@ -168,3 +168,18 @@ footer{
   .header-section .nav-items .nav-item a.active{
     background-color: red;
   }
+
+  .box {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .box:hover {
+    background-color: yellow;
+    color: black;
+  }
