@@ -1,10 +1,11 @@
-import CustomApp from "./project/project1/app";
+import React from 'react';
+import PreloaderExample from "./repository/preloader/1"
 
 function App() {
   
   return (
     <>
-     <CustomApp/>
+     <PreloaderExample/>
     </>
   )
 }

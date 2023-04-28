@@ -9,7 +9,9 @@ export default function SlideshowExample() {
   )
 }
 
+
 function Example(){
+
   const settings = {
     dots: true,
     infinite: true,
@@ -17,6 +19,8 @@ function Example(){
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
+  
     return(
         <>
          <h2> Single Item</h2>
