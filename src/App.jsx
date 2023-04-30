@@ -1,11 +1,11 @@
 import React from 'react';
-import PreloaderExample from "./repository/preloader/1"
+import FetchDisplayDataApiExample from "./components/differentwaystofetchdata/6"
 
 function App() {
   
   return (
     <>
-     <PreloaderExample/>
+     <FetchDisplayDataApiExample/>
     </>
   )
 }
