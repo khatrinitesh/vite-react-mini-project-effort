@@ -1,11 +1,12 @@
 import React from 'react';
-import FetchDisplayDataApiExample from "./components/differentwaystofetchdata/6"
+import CharacterCounterExample from "./repository/charactercounter/1"
+
 
 function App() {
   
   return (
     <>
-     <FetchDisplayDataApiExample/>
+     <CharacterCounterExample/>
     </>
   )
 }
