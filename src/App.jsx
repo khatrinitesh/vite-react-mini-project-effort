@@ -1,13 +1,12 @@
 import React from 'react';
-import HOCExample from "./components/higherordercomponents/1"
-
+import ProfilerExample from "./components/profiler/1"
 
 
 function App() {
   
   return (
     <>
-     <HOCExample/>
+     <ProfilerExample/>
     </>
   )
 }
