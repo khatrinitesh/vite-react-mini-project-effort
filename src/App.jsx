@@ -1,5 +1,5 @@
 import React from 'react';
-import RefDomExample from "./components/refsdom/1"
+import HOCExample from "./components/higherordercomponents/1"
 
 
 
@@ -7,7 +7,7 @@ function App() {
   
   return (
     <>
-     <RefDomExample/>
+     <HOCExample/>
     </>
   )
 }

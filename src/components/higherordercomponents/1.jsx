@@ -1,32 +1,17 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
+import PersonTwo from './person2';
+import PersonOne from './person1';
 
-export default function RefDomExample() {
+export default function HOCExample() {
   return (
     <>
-      <QtyIncrement/>
+      <PersonOne/>
+      <hr/>
+      <PersonTwo/>
+      
     </>
   )
 }
 
-// EXAMPLE 1
-class QtyIncrement extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.qtyInc = React.createRef();
-    }
 
-    incrementQuantity = () => {
-        this.qtyInc.current.value++;
-    }
-    decrementQuantity = () => {
-        this.qtyInc.current.value--;
-    }
-
-    render(){
-        return(
-            <>
-            </>
-        )
-    }
-}
