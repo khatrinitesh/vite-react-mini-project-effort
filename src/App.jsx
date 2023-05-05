@@ -1,12 +1,12 @@
 import React from 'react';
-import ProfilerExample from "./components/profiler/1"
+import CustomHooksExample from "./components/hooks/customhooks/1"
 
 
 function App() {
   
   return (
     <>
-     <ProfilerExample/>
+     <CustomHooksExample/>
     </>
   )
 }

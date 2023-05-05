@@ -16,7 +16,7 @@ import "bootstrap/dist/js/bootstrap.js";
 
 const MainLayout = React.lazy(() => import('./mainlayout.jsx'));
 
-export default function app() {
+export default function CustomApp() {
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       <Router>
