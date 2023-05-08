@@ -1,14 +1,14 @@
 import React from 'react';
-import CustomHooksExample from "./components/hooks/customhooks/1"
+import FetchExample from "./components/differentwaystofetchdata/8"
 
 
-function App() {
+function CustomApp() {
   
   return (
     <>
-     <CustomHooksExample/>
+     <FetchExample/>
     </>
   )
 }
 
-export default App
+export default CustomApp
