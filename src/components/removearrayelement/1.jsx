@@ -8,13 +8,113 @@ export default function RemoveArrayElementExmple() {
   )
 }
 
+const initialList = [
+    {
+      id: 'a',
+      firstname: 'Robin',
+      lastname: 'Wieruch',
+      year: 1988,
+    },
+    {
+      id: 'b',
+      firstname: 'Dave',
+      lastname: 'Davidds',
+      year: 1990,
+    },
+];
+
 function Example(){
-    const [fruits,setFruits] = useState([
-        { id: 1, name: "🍎 Apple" },
-        { id: 2, name: "🍊 Orange" },
-        { id: 3, name: "🍌 Banana" },
-        { id: 4, name: "🍇 Grapes" },
-    ]);
+
+    const [list,setList] = useState(initialList)
+
+    const handleRemove= (id) => {
+        const newList = list.filter((val) => val.id !== id)
+        setList(newList)
+    }
+    return(
+        <>
+            <List list={list} onRemove={handleRemove}/>
+        </>
+    )
+}
+
+const List = ({list,onRemove}) => {
+    return(
+        <>
+            <ul>
+                {list.map((item) => {
+                    return(
+                        <Item key={item.id} item={item} onRemove={onRemove}/>
+                    )
+                })}
+            </ul>
+        </>
+    )
+}
+
+const Item = ({item,onRemove}) => {
+    return(
+        <>
+         <li>
+            <span>{item.id}</span>
+            <span>{item.firstname}</span>
+            <span>{item.lastname}</span>
+            <span>{item.year}</span>
+            <button type="button" onClick={() => onRemove(item.id)}>Remove</button>
+        </li>
+        </>
+    )
+}
+
+// function Example(){
+//     const [list,setList] = useState(initialList)
+
+//     const handleRemove = (id) => {
+//         const newList = list.filter((val) => val.id !== id)
+//         setList(newList)
+//     }
+
+//     return(
+//         <>
+//             <List list={list} onRemove={handleRemove}/>
+//         </>
+//     )
+// }
+
+// const List = ({list,onRemove}) => {
+//     return(
+//         <>
+//         <ul>
+//          {list.map((item) => {
+//             return(
+//                 <Item item={item} onRemove={onRemove}/>
+//             )
+//          })}
+//          </ul>
+//         </>
+//     )
+// }
+
+// const Item = ({item,onRemove}) => {
+//     return(
+//         <>
+//          <li>
+//             <span>{item.firstname}</span>
+//             <span>{item.lastname}</span>
+//             <span>{item.year}</span>
+//             <button type="button" onClick={() => onRemove(item.id)}>&times;</button>
+//          </li>
+//         </>
+//     )
+// }
+
+// function Example(){
+//     const [fruits,setFruits] = useState([
+//         { id: 1, name: "🍎 Apple" },
+//         { id: 2, name: "🍊 Orange" },
+//         { id: 3, name: "🍌 Banana" },
+//         { id: 4, name: "🍇 Grapes" },
+//     ]);
 
 //    const deleteValues = (val) => {
 //     setFruits(prevFruit => {
@@ -22,27 +122,27 @@ function Example(){
 //     });
 //    }
 
-const deleteValues  = (id) => {
-    setFruits(oldValues => {
-        return oldValues.filter(fruit => fruit.id !== id);
-    });
-}
+// const deleteValues  = (id) => {
+//     setFruits(oldValues => {
+//         return oldValues.filter(fruit => fruit.id !== id);
+//     });
+// }
     
-    return(
-        <>
-         <ul>
-            {fruits.map((val) => {
-                return(
-                    <li key={val.id}>
-                        <span>{val.name}</span>
-                        <button onClick={() => deleteValues(val.id)}>Delete</button>
-                    </li>
-                )
-            })}
-         </ul>
-        </>
-    )
-}
+//     return(
+//         <>
+//          <ul>
+//             {fruits.map((val) => {
+//                 return(
+//                     <li key={val.id}>
+//                         <span>{val.name}</span>
+//                         <button onClick={() => deleteValues(val.id)}>Delete</button>
+//                     </li>
+//                 )
+//             })}
+//          </ul>
+//         </>
+//     )
+// }
 
 // function Example(){
 

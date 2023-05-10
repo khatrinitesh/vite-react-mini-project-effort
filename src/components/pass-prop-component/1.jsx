@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import styled from 'styled-components';
 
 export default function PassPropsComponentExample() {
     // const example = ['A', 'B', 'C', 'D'];
@@ -18,11 +19,11 @@ export default function PassPropsComponentExample() {
     // ]
     // const obj = {name: 'Alice', age: 29, country: 'Austria'};
 
-    const user = {
-      id: 0,
-      name: "Chidume Nnamdi",
-      age: 54,
-    };
+    // const user = {
+    //   id: 0,
+    //   name: "Chidume Nnamdi",
+    //   age: 54,
+    // };
 
     // const info ={name:'nitesh',email:'xyz@gmail.com'}
   return (
@@ -38,10 +39,264 @@ export default function PassPropsComponentExample() {
         {/* <Person {...obj}/> */}
         {/* <Person name={obj.name} age={obj.age} country={obj.country}/> */}
         {/* <Sum firstNum={2} secondNum={11}/> */}
-        <DisplayUser user={user}/>
+        <Example/>
     </div>
   )
 }
+
+function Example(){
+
+  // const users = [
+  //   {
+  //     id:1,
+  //     name:'a'
+  //   },
+  //   {
+  //     id:2,
+  //     name:'b'
+  //   },
+  //   {
+  //     id:3,
+  //     name:'c'
+  //   },
+  // ]
+  return(
+    <>
+     <CustomInput/>
+    </>
+  )
+}
+
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: palevioletred;
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
+`;
+
+const CustomInput = () => {
+  const [text,setText] = useState('');
+  function handleChange(e){
+    setText(e.target.value)
+  }
+
+  return(
+    <>
+     <Input type="text" value={text} onChange={handleChange}/>
+     {text}
+    </>
+  )
+}
+
+
+// const List = ({users}) => {
+//   return(
+//     <>
+//      {users.map((user) => {
+//       return(
+//         <Item key={user.id} id={user.id}>{user.name}</Item>
+//       )
+//      })}
+//     </>
+//   )
+// }
+
+// const Item = ({id,children}) => {
+//   return(
+//     <p>{id}- {children}</p>
+//   )
+// }
+
+// const Custom = ({user,onUpdateName}) => {
+//   const [name,setName] = useState(user.name);
+
+//   function onUpdateName(e){
+//     name(e.target.value);
+//   }
+//   return(
+//     <>
+//      {user.name}
+//      <input type="text" value={name} onChange={handleChange}/>
+//      <button type="button" onClick={() => onUpdateName(user,name)}>Update</button>
+//     </>
+//   )
+// }
+
+// const Custom = () => {
+//   const user = {
+//     name:'nitesh',
+//     avatarUrl:'https://cdn.wallpapersafari.com/25/46/n6PEvV.png'
+//   }
+//   return(
+//     <>
+//      <Profile user={user}>
+//       <AvatarImage user={user}/>
+//      </Profile>
+//     </>
+//   )
+// }
+
+// const Profile = ({user,children}) => {
+//   return(
+//     <div className='profile'>
+//       <div>{children}</div>
+//       <div>
+//         <p>{user.name}</p>
+//       </div>
+//     </div>
+//   )
+// }
+
+// const AvatarImage = ({user}) => {
+//   return(
+//     <>
+//      <img src={user.avatarUrl} className='round'/>
+//     </>
+//   )
+// }
+
+// const Custom = () => {
+
+//   const [count,setCount] = useState(0);
+//   const [bigtext,setBigText] = useState('Headtitle')
+//   const [smalltext,setSmallText] = useState('lorem ipsum')
+
+//   function handleCount(){
+//     setCount(prevCount => prevCount + 1)
+//   }
+//   return(
+//     <>
+//       <Button disabled={false} label={count} onClick={handleCount}/>
+//       <TitleBlock title={bigtext} desc={smalltext}/>
+//     </>
+//   )
+// }
+
+// const TitleBlock = ({title,desc}) => {
+//   return(
+//     <>
+//      <h3>{title}</h3>
+//      <p>{desc}</p>
+//     </>
+//   )
+// }
+
+// const Button = ({label,onClick,...others}) => {
+//   return(
+//     <button disabled={others.disabled} onClick={onClick}>{label}</button>
+//   )
+// }
+
+// const Custom = () => {
+//   const greeting = {
+//     title: 'React',
+//     description: 'Your component library for ...',
+//   }
+//   // return(
+//   //   <>
+//   //    <Welcome {...greeting}/>
+//   //   </>
+//   // )
+//   return(
+//     <>
+//      <Welcome {...greeting}/>
+//     </>
+//   )
+// }
+
+const Welcome = ({title,description}) => {
+  return(
+    <>
+     <Headline title={`Welcome to ${title}`}/>
+     <Descrption paragraph={description}/>
+    </>
+  )
+}
+
+// const Welcome = ({text}) => {
+//   return(
+//     <div>
+//        <Headline title={`Welcome to ${text.title}`}/>
+//        <Descrption paragraph={`Welcome to ${text.description}`}/>
+//     </div>
+//   )
+// }
+
+const Headline = ({title}) => <h1>{title}</h1>
+const Descrption = ({paragraph}) => <p>{paragraph}</p>
+
+// const Custom = () => {
+//   const greeting = "hello nitesh"
+//   return(
+//     <h1>{greeting}</h1>
+//   )
+// }
+
+// const Custom = () => {
+//   const greeting = 'Welcome to React';
+
+//   return(
+//     <>
+//      <h1>{greeting}</h1>
+//     </>
+//   )
+// }
+
+// const Custom = (props) => {
+  
+
+//   return(
+//     <>
+//      <h1>{props.text}</h1>
+//     </>
+//   )
+// }
+
+// const Custom = ({text}) => {
+
+//   return(
+//     <>
+//      <h1 style={{color:'red',padding:'10px'}}>{text}</h1>
+//     </>
+//   )
+// }
+
+// const Custom = () => {
+//   const [greeting,setGreeting] = useState('Welcome to react')
+//   const [isShow, setShow] = React.useState(true);
+//   function handleChange(e){
+//     setGreeting(e.target.value);
+//   }
+
+//   const label = 'button toggle'
+
+//   const handleToggle = () => {
+//     setShow(!isShow);
+//   };
+//   return(
+//     <>
+//       <Button label={label} onClick={handleToggle}/>
+//       <input type="text" value={greeting} onChange={handleChange} />
+//      {isShow  ? <Welcome text={greeting}/> : null}
+//     </>
+//   )
+// }
+// const Button = ({ label,onClick }) => {
+//   return (
+//     <button onClick={onClick} type="button">
+//       {label}
+//     </button>
+//   );
+// };
+
+// const Welcome = ({text}) => {
+//   return(
+//     <h1>{text}</h1>
+//   )
+// }
+
 
 // function Example({arr}) {
 //   return (

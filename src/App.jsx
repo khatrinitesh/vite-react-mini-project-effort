@@ -1,12 +1,12 @@
 import React from 'react';
-import FetchExample from "./components/differentwaystofetchdata/8"
+import FeatureExample from "./repository/feature/feature"
 
 
 function CustomApp() {
   
   return (
     <>
-     <FetchExample/>
+     <FeatureExample/>
     </>
   )
 }
