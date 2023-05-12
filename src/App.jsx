@@ -1,12 +1,12 @@
 import React from 'react';
-import FeatureExample from "./repository/feature/feature"
+import CustomPagination from "./repository/pagination/1"
 
 
 function CustomApp() {
   
   return (
     <>
-     <FeatureExample/>
+     <CustomPagination/>
     </>
   )
 }

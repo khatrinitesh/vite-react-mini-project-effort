@@ -16,3 +16,41 @@ export const featureOne = [
         icon:'../assets/img/template1/icon/featured-04.png'
     },
 ]
+
+export const featureTwo = [
+    {
+        avatar:"../assets/img/template1/avatar/trending-01.jpg",
+        oldprice:"$28",
+        newprice:"$20",
+        text:"Action",
+        title:"Assasin Creed",
+
+    },
+    {
+        avatar:"../assets/img/template1/avatar/trending-02.jpg",
+        oldprice:"",
+        newprice:"$44",
+        text:"Action",
+        title:"Tennis ",
+        icon:""
+
+    },
+    {
+        avatar:"../assets/img/template1/avatar/trending-03.jpg",
+        oldprice:"$64",
+        newprice:"$44",
+        text:"Action",
+        title:"Rhythmic gymnastics ",
+        icon:""
+
+    },
+    {
+        avatar:"../assets/img/template1/avatar/trending-04.jpg",
+        oldprice:"",
+        newprice:"$32",
+        text:"Action",
+        title:"Judo",
+        icon:""
+
+    },
+]
