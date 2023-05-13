@@ -1,12 +1,11 @@
 import React from 'react';
-import CustomPagination from "./repository/pagination/1"
-
+import Footer from "./repository/footer/1"
 
 function CustomApp() {
   
   return (
     <>
-     <CustomPagination/>
+     <Footer/>
     </>
   )
 }
