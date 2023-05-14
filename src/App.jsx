@@ -1,13 +1,13 @@
 import React from 'react';
-import Footer from "./repository/footer/1"
+import ProjectApp from './project/project2/app';
 
-function CustomApp() {
+function AppExample() {
   
-  return (
+  return (  
     <>
-     <Footer/>
+     <ProjectApp/>
     </>
   )
 }
 
-export default CustomApp
+export default AppExample
