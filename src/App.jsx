@@ -1,11 +1,11 @@
 import React from 'react';
-import ProjectApp from './project/project2/app';
+import FetchRestApiExample from './components/differentwaystofetchdata/10';
 
 function AppExample() {
   
   return (  
     <>
-     <ProjectApp/>
+     <FetchRestApiExample/>
     </>
   )
 }

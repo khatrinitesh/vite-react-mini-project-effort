@@ -1,6 +1,7 @@
 import React from 'react';
 import './bootstrap.css';
 import './style1.css';
+import {FaTwitter,FaLinkedin,FaFacebook,FaYoutube,FaRegPaperPlane ,FaInstagram} from 'react-icons/fa';
 
 export default function Example() {
   return (
@@ -102,7 +103,7 @@ export default function Example() {
                     required=""
                     />
                     <button type="submit" className="form-control">
-                    <i className="bi-send" />
+                        <FaRegPaperPlane/>
                     </button>
                 </div>
                 </form>
@@ -130,19 +131,29 @@ export default function Example() {
                 <div className="col-lg-5 col-12 mt-2 mt-lg-0">
                 <ul className="social-icon">
                     <li className="social-icon-item">
-                    <a href="#" className="social-icon-link bi-twitter" />
+                    <a href="#" className="social-icon-link">
+                        <FaTwitter/>
+                    </a>
                     </li>
                     <li className="social-icon-item">
-                    <a href="#" className="social-icon-link bi-facebook" />
+                    <a href="#" className="social-icon-link">
+                        <FaFacebook/>
+                    </a>
                     </li>
                     <li className="social-icon-item">
-                    <a href="#" className="social-icon-link bi-linkedin" />
+                    <a href="#" className="social-icon-link">
+                        <FaLinkedin/>
+                    </a>
                     </li>
                     <li className="social-icon-item">
-                    <a href="#" className="social-icon-link bi-instagram" />
+                    <a href="#" className="social-icon-link">
+                        <FaInstagram/>
+                    </a>
                     </li>
                     <li className="social-icon-item">
-                    <a href="#" className="social-icon-link bi-youtube" />
+                    <a href="#" className="social-icon-link">
+                        <FaYoutube/>
+                    </a>
                     </li>
                 </ul>
                 </div>
