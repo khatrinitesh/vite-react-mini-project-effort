@@ -16,41 +16,82 @@ function Example(){
         {/* <SamepleRenderProps/> */}
         {/* <ChildComponent/> */}
         {/* <FinalExampleOne/> */}
-        <Final/>
+        <FinalExxx/>
         </>
     )
 }
 
-function Final(){
+// function Final(){
+//     return(
+//         <>
+//         {/* <Title render={() => <h1>nitesh khatri</h1>}/> */}
+//         <Title
+//          render={() => {
+//             return(
+//                 <div>
+//                     <Nitesh/>
+//                     <hr/>
+//                     <Sameet/>
+//                 </div>
+//             )
+//          }}/>
+
+//         </>
+//     )
+// }
+
+
+function FinalExxx(){
     return(
         <>
-        {/* <Title render={() => <h1>nitesh khatri</h1>}/> */}
-        <Title
-         render={() => {
+        <Example111 render={() => {
             return(
-                <div>
-                    <Nitesh/>
-                    <hr/>
-                    <Sameet/>
-                </div>
+                <div>nitesh khatri - sameet khatri</div>
             )
-         }}/>
+        }}/>
         </>
     )
 }
 
+const Example111 = (props) => props.render()
 
-const Nitesh = () => {
-    return(
-        <>Nitesh Khatri</>
-    )
-}
-const Sameet= ()=>{
-    return(
-        <>Sameet Khatri</>
-    )
-}
-const Title = (props) => props.render();
+// function Final(){
+//     return(
+//         <>
+//          <FinalExample render={() => {
+//             return(
+//                 <div>
+//                     <h1>nitesh khatri</h1>
+//                     <h1>sameet khatri</h1>
+//                 </div>
+//             )
+//          }}/>
+//         </>
+//     )
+// }
+
+
+// class FinalExample extends React.Component{
+//     render(){
+//         return(
+//             <>
+//              {this.props.render()}
+//             </>
+//         )
+//     }
+// }
+
+// const Nitesh = () => {
+//     return(
+//         <>Nitesh Khatri</>
+//     )
+// }
+// const Sameet= ()=>{
+//     return(
+//         <>Sameet Khatri</>
+//     )
+// }
+// const Title = (props) => props.render();
 
 
 // class FinalExampleOne extends React.Component{

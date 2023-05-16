@@ -1,11 +1,12 @@
 import React from 'react';
-import FetchRestApiExample from './components/differentwaystofetchdata/10';
+import UseReducrExample from './components/hooks/useReducer/1';
+
 
 function AppExample() {
   
   return (  
     <>
-     <FetchRestApiExample/>
+     <UseReducrExample/>
     </>
   )
 }

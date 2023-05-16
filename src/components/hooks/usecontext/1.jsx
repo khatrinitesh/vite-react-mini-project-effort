@@ -15,56 +15,97 @@ export default function ContextExample() {
   )
 }
 
-function Example(){
+
+
+export const NameContext = createContext();
+
+function Example({name}){
   return(
     <>
-      <ResultContext/>
+      <NameContext.Provider value={name}>
+        <ChildOne/>
+      </NameContext.Provider>
     </>
   )
 }
 
-function ResultContext(){
+function ChildOne(){
   return(
     <>
-    <Tabs>
-      <Tab index={0} label="Tab 1"/>
-      <Tab index={1} label="Tab 2"/>
-      <TabContent index={0}>Content for Tab 1</TabContent>
-      <TabContent index={1}>Content for Tab 2</TabContent>
-    </Tabs></>
+    <ChildTwo/>
+    </>
   )
 }
-
-const TabsContext = createContext();
-
-const Tabs = ({children}) => {
-  const [activeTab,setActiveTab] = useState(0)
+function ChildTwo(){
   return(
     <>
-    <TabsContext.Provider value={{activeTab,setActiveTab}}>
-      {children}
-    </TabsContext.Provider>
+    <ChildThree/>
+    </>
+  )
+}
+function ChildThree(){
+  const name = useContext(NameContext)
+  return(
+    <>
+    {name} from child 3 
     </>
   )
 }
 
-// FIRST CHILD COMPONENT
-const Tab = ({index,label}) => {
-  const {activeTab,setActiveTab} = useContext(TabsContext);
-
-  return(
-    <>
-      <button className={activeTab === index ? "active btn btn-primary" : "inactive btn btn-primary"} onClick={() => setActiveTab(index)}>{label}</button>
-    </>
-  )
+ContextExample.defaultProps = {
+  name:'nitesh'
 }
 
-// SECOND CHILD COMPONENT
-const TabContent = ({index,children}) => {
-  const {activeTab} = useContext(TabsContext);
+// function Example(){
+//   return(
+//     <>
+//       <ResultContext/>
+//     </>
+//   )
+// }
 
-  return activeTab === index ? <div>{children}</div> : null;
-}
+// function ResultContext(){
+//   return(
+//     <>
+//     <Tabs>
+//       <Tab index={0} label="Tab 1"/>
+//       <Tab index={1} label="Tab 2"/>
+//       <TabContent index={0}>Content for Tab 1</TabContent>
+//       <TabContent index={1}>Content for Tab 2</TabContent>
+//     </Tabs></>
+//   )
+// }
+
+// const TabsContext = createContext();
+
+// const Tabs = ({children}) => {
+//   const [activeTab,setActiveTab] = useState(0)
+//   return(
+//     <>
+//     <TabsContext.Provider value={{activeTab,setActiveTab}}>
+//       {children}
+//     </TabsContext.Provider>
+//     </>
+//   )
+// }
+
+// // FIRST CHILD COMPONENT
+// const Tab = ({index,label}) => {
+//   const {activeTab,setActiveTab} = useContext(TabsContext);
+
+//   return(
+//     <>
+//       <button className={activeTab === index ? "active btn btn-primary" : "inactive btn btn-primary"} onClick={() => setActiveTab(index)}>{label}</button>
+//     </>
+//   )
+// }
+
+// // SECOND CHILD COMPONENT
+// const TabContent = ({index,children}) => {
+//   const {activeTab} = useContext(TabsContext);
+
+//   return activeTab === index ? <div>{children}</div> : null;
+// }
 
 // const employeeContext=React.createContext();
 

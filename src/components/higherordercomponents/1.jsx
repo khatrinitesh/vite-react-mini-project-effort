@@ -4,7 +4,8 @@ import React,{useState,useEffect} from 'react';
 // import ExampleTwo from './example2';
 // import ExampleOne from './example2';
 // import ExampleThree from './example3';
-import ExampleFour from './example4';
+// import ExampleFour from './example4';
+import ExampleFive from './example5';
 
 export default function HOCExample() {
   return (
@@ -17,7 +18,8 @@ export default function HOCExample() {
       <ExampleTwo/> */}
       {/* <hr/>
       <ExampleThree/> */}
-      <ExampleFour/>
+      {/* <ExampleFour/> */}
+      <ExampleFive/>
     </>
   )
 }

@@ -12,35 +12,79 @@ export default function UseEffectExample() {
 }
 
 function Example(){
-    const [employeeCount, setEmployeeCount]=useState(0);
-    const [noOfDays,setNoOfDays]=useState(0);
+    // const [example,setExample] = useState('');
+    // const [sum,setSum] = useState('');
+    // const [fullname,setFullName] = useState('');
 
-    useEffect(() => {
-        var handle =setInterval(getEmpCount,500)
-        return () => {
-            clearInterval(handle)
+    useEffect(() =>{
+        const resizeDocumentTitle = () => {
+            document.title = window.innerWidth;
+            document.title = window.innerHeight;
         }
-    });
+        window.addEventListener('resize',resizeDocumentTitle)
+        return() => {
+            window.removeEventListener('resize',resizeDocumentTitle)
+        }
+        
+        // let x = window.innerWidth;
+        // let y = window.innerHeight;
+        // let z = `${x} ${y}`
+        // setExample(z)
 
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then((res) => res.json())
-        .then((data) => setNoOfDays(data))
-    })
-    function getEmpCount(){
-        alert('Getting the Employees Count')
-        fetch("https://jsonplaceholder.typicode.com/users")
-        .then(res => res.json())
-        .then(
-            (result) => {          
-            setEmployeeCount(result.length);
-            }
-        );
-    }
+        // function sum(a,b){
+        //     return a + b 
+        // }
+        // setSum(sum(10,10))
+
+
+        // const fname = 'nitesh'
+        // const lname = 'khatri'
+        // const fullname = `${fname} ${lname}` 
+        // setFullName(fullname)
+    },[])
     return(
-        <></>
+        <>
+            {/* {example}
+            <br/>
+            {sum}
+            <br/>
+            {fullname}
+            <br/> */}
+            
+        </>
     )
 }
+
+// function Example(){
+//     const [employeeCount, setEmployeeCount]=useState(0);
+//     const [noOfDays,setNoOfDays]=useState(0);
+
+//     useEffect(() => {
+//         var handle =setInterval(getEmpCount,500)
+//         return () => {
+//             clearInterval(handle)
+//         }
+//     });
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/users')
+//         .then((res) => res.json())
+//         .then((data) => setNoOfDays(data))
+//     })
+//     function getEmpCount(){
+//         alert('Getting the Employees Count')
+//         fetch("https://jsonplaceholder.typicode.com/users")
+//         .then(res => res.json())
+//         .then(
+//             (result) => {          
+//             setEmployeeCount(result.length);
+//             }
+//         );
+//     }
+//     return(
+//         <></>
+//     )
+// }
 
 // function Example(){
 
