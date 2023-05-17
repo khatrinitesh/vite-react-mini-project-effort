@@ -1,12 +1,12 @@
 import React from 'react';
-import UseReducrExample from './components/hooks/useReducer/1';
+import CustomReduxExample from './redux/redux2/app';
 
 
 function AppExample() {
   
   return (  
     <>
-     <UseReducrExample/>
+     <CustomReduxExample/>
     </>
   )
 }

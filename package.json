@@ -47,6 +47,7 @@
     "react-spinners": "^0.13.8",
     "react-vertical-timeline-component": "^3.6.0",
     "redux": "^4.2.1",
+    "redux-saga": "^1.2.3",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "slick-carousel": "^1.8.1",
