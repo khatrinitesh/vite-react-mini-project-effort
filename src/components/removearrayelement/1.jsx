@@ -8,63 +8,111 @@ export default function RemoveArrayElementExmple() {
   )
 }
 
-const initialList = [
-    {
-      id: 'a',
-      firstname: 'Robin',
-      lastname: 'Wieruch',
-      year: 1988,
-    },
-    {
-      id: 'b',
-      firstname: 'Dave',
-      lastname: 'Davidds',
-      year: 1990,
-    },
-];
-
-function Example(){
-
-    const [list,setList] = useState(initialList)
-
-    const handleRemove= (id) => {
-        const newList = list.filter((val) => val.id !== id)
-        setList(newList)
+class Example extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            favourites: [
+                { id: 1, label: 'baguettes' },
+                { id: 2, label: 'bread' },
+                { id: 3, label: 'potatoes' },
+                { id: 4, label: 'rice' },
+                { id: 5, label: 'pasta' },
+                { id: 6, label: 'chicken' },
+                { id: 7, label: 'beans' },
+                { id: 8, label: 'apples' },
+                { id: 9, label: 'oranges' },
+                { id: 10, label: 'grapes' },
+                { id: 11, label: 'biscuits' },
+            ],
+            color: "white",
+            rooms: 4
+        }
     }
-    return(
-        <>
-            <List list={list} onRemove={handleRemove}/>
-        </>
-    )
-}
 
-const List = ({list,onRemove}) => {
-    return(
-        <>
-            <ul>
-                {list.map((item) => {
+   
+    removeFavourite = (id) => {
+        const removeFav = this.state.favourites.slice();
+        removeFav.splice(id,1)
+        this.setState({
+            favourites:removeFav
+        })
+    }
+
+    render(){
+        return(
+            <>
+                {this.state.favourites.map((item,i) => {
                     return(
-                        <Item key={item.id} item={item} onRemove={onRemove}/>
+                        <div key={item.id}>
+                            {item.label}
+                            <button onClick={this.removeFavourite.bind(this,i)}>&times;</button>
+                        </div>
                     )
                 })}
-            </ul>
-        </>
-    )
+                {this.state.color} = {this.state.rooms}
+            </>
+        )
+    }
 }
 
-const Item = ({item,onRemove}) => {
-    return(
-        <>
-         <li>
-            <span>{item.id}</span>
-            <span>{item.firstname}</span>
-            <span>{item.lastname}</span>
-            <span>{item.year}</span>
-            <button type="button" onClick={() => onRemove(item.id)}>Remove</button>
-        </li>
-        </>
-    )
-}
+// const initialList = [
+//     {
+//       id: 'a',
+//       firstname: 'Robin',
+//       lastname: 'Wieruch',
+//       year: 1988,
+//     },
+//     {
+//       id: 'b',
+//       firstname: 'Dave',
+//       lastname: 'Davidds',
+//       year: 1990,
+//     },
+// ];
+
+// function Example(){
+
+//     const [list,setList] = useState(initialList)
+
+//     const handleRemove= (id) => {
+//         const newList = list.filter((val) => val.id !== id)
+//         setList(newList)
+//     }
+//     return(
+//         <>
+//             <List list={list} onRemove={handleRemove}/>
+//         </>
+//     )
+// }
+
+// const List = ({list,onRemove}) => {
+//     return(
+//         <>
+//             <ul>
+//                 {list.map((item) => {
+//                     return(
+//                         <Item key={item.id} item={item} onRemove={onRemove}/>
+//                     )
+//                 })}
+//             </ul>
+//         </>
+//     )
+// }
+
+// const Item = ({item,onRemove}) => {
+//     return(
+//         <>
+//          <li>
+//             <span>{item.id}</span>
+//             <span>{item.firstname}</span>
+//             <span>{item.lastname}</span>
+//             <span>{item.year}</span>
+//             <button type="button" onClick={() => onRemove(item.id)}>Remove</button>
+//         </li>
+//         </>
+//     )
+// }
 
 // function Example(){
 //     const [list,setList] = useState(initialList)

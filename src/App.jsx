@@ -1,12 +1,12 @@
 import React from 'react';
-import CustomReduxExample from './redux/redux2/app';
+import CustomApp from './project/project3/app';
 
 
 function AppExample() {
   
   return (  
     <>
-     <CustomReduxExample/>
+     <CustomApp/>
     </>
   )
 }
