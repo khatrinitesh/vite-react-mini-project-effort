@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useCallback} from 'react';
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
@@ -12,48 +12,66 @@ export default function UseEffectExample() {
 }
 
 function Example(){
-    // const [example,setExample] = useState('');
-    // const [sum,setSum] = useState('');
-    // const [fullname,setFullName] = useState('');
+  const [count,setCount] = useState(0);
 
-    useEffect(() =>{
-        const resizeDocumentTitle = () => {
-            document.title = window.innerWidth;
-            document.title = window.innerHeight;
-        }
-        window.addEventListener('resize',resizeDocumentTitle)
-        return() => {
-            window.removeEventListener('resize',resizeDocumentTitle)
-        }
-        
-        // let x = window.innerWidth;
-        // let y = window.innerHeight;
-        // let z = `${x} ${y}`
-        // setExample(z)
-
-        // function sum(a,b){
-        //     return a + b 
-        // }
-        // setSum(sum(10,10))
+  const getResult = useCallback(() => {
+    return 2 * 2
+  });
 
 
-        // const fname = 'nitesh'
-        // const lname = 'khatri'
-        // const fullname = `${fname} ${lname}` 
-        // setFullName(fullname)
-    },[])
-    return(
-        <>
-            {/* {example}
-            <br/>
-            {sum}
-            <br/>
-            {fullname}
-            <br/> */}
-            
-        </>
-    )
+  useEffect(() => {
+    setCount(count => count + 1)
+  },[getResult])
+  return(
+    <>
+     <p>value of count: {count}</p>
+    </>
+  )
 }
+
+// function Example(){
+//     // const [example,setExample] = useState('');
+//     // const [sum,setSum] = useState('');
+//     // const [fullname,setFullName] = useState('');
+
+//     useEffect(() =>{
+//         const resizeDocumentTitle = () => {
+//             document.title = window.innerWidth;
+//             document.title = window.innerHeight;
+//         }
+//         window.addEventListener('resize',resizeDocumentTitle)
+//         return() => {
+//             window.removeEventListener('resize',resizeDocumentTitle)
+//         }
+        
+//         // let x = window.innerWidth;
+//         // let y = window.innerHeight;
+//         // let z = `${x} ${y}`
+//         // setExample(z)
+
+//         // function sum(a,b){
+//         //     return a + b 
+//         // }
+//         // setSum(sum(10,10))
+
+
+//         // const fname = 'nitesh'
+//         // const lname = 'khatri'
+//         // const fullname = `${fname} ${lname}` 
+//         // setFullName(fullname)
+//     },[])
+//     return(
+//         <>
+//             {/* {example}
+//             <br/>
+//             {sum}
+//             <br/>
+//             {fullname}
+//             <br/> */}
+            
+//         </>
+//     )
+// }
 
 // function Example(){
 //     const [employeeCount, setEmployeeCount]=useState(0);
