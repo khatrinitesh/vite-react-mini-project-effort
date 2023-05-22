@@ -9,26 +9,68 @@ export default function ConrolledUnControlledExample() {
   )
 }
 
-
 // uncontrolled
 function Example(){
+  const inputRef = useRef();
 
-
-    const ref = useRef();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(ref.current.value);
-    }
-    return(
-        <>
-            <form>
-                <input type='text' ref={ref}/>
-                <button type="submit" onClick={handleSubmit}>Submit</button>
-            </form>
-        </>
-    )
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log('submitted value',inputRef.current.value);
+  }
+  return(
+    <>
+      <form onSubmit={handleSubmit}>
+          <input type='text' ref={inputRef}/>
+          <button type="submit">Submit</button>
+      </form>
+    </>
+  )
 }
+
+// controlled
+// function Example(){
+
+//   const [inputVal,setInputVal] = useState('');
+
+//   const handleChange= (e) => {
+//     setInputVal(e.target.value)
+//   }
+
+//   function handleSubmit(e){
+//     e.preventDefault();
+//     console.log('submitted',inputVal)
+//   }
+
+//   return(
+//     <>
+//      <form onSubmit={handleSubmit}>
+//         <input type='text' value={inputVal} onChange={handleChange}/>
+//         <button type="submit">Submit</button>
+//      </form>
+//     </>
+//   )
+// }
+
+
+// // uncontrolled
+// function Example(){
+
+
+//     const ref = useRef();
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         console.log(ref.current.value);
+//     }
+//     return(
+//         <>
+//             <form>
+            //  <input type='text' ref={ref}/>
+//                 <button type="submit" onClick={handleSubmit}>Submit</button>
+//             </form>
+//         </>
+//     )
+// }
 
 
 // controlled 

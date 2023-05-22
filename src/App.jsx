@@ -1,12 +1,11 @@
 import React from 'react';
-import CustomApp from './project/project3/app';
-
+import AddArrayElementExmple from './components/additemlist/1';
 
 function AppExample() {
   
   return (  
     <>
-     <CustomApp/>
+     <AddArrayElementExmple/>
     </>
   )
 }

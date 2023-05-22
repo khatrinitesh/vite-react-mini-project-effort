@@ -8,28 +8,226 @@ export default function UseStateExample() {
   )
 }
 
+
 function Example(){
 
-  const [computer,setComputer] = useState({
-    keyboard:'Dell',
-    mouse:'hp'
-  });
+  const initialState = [
+    {id: 1, name:"nitesh",country: 'Canada'},
+    {id: 2, name:"sameet",country: 'Belgium'},
+    {id: 3,name:"sonal", country: 'Canada'},
+  ];
 
-  const btnChange =()=>{
-    setComputer(prevState => ({
-      keyboard:'mac',
-      mouse:'iball'
-    }));
+  const [data,setData] = useState(initialState);
+
+  const updateState = () => {
+    setData(prevState => {
+      const newState = prevState.map((obj) => {
+        if(obj.country === 'Canada'){
+          return{
+            ...obj,
+            name:'mayur',
+            country:'dubai'
+          }
+        }
+        return obj
+      })
+      return newState;
+    })
   }
+
+  const removeObjectFromArray = () => {
+    setData(current =>
+      current.filter(obj => {
+        return obj.id !== 2;
+      }),
+    );
+  };
+
+
 
   return(
     <>
-     <h1>my favorite computer is {computer.keyboard}</h1>
-     <h1>my favorite computer is {computer.mouse}</h1>
-     <button onClick={btnChange}>Click</button>
+     <button onClick={updateState}>Update state</button>
+     {data.map((obj) => {
+      return(
+        <div key={obj.id}>
+            <h2>id: {obj.id}</h2>
+            <h2>name: {obj.name}</h2>
+            <h2>country: {obj.country}</h2>
+            <button onClick={removeObjectFromArray}>&times;</button>
+            <hr />
+        </div>
+      )
+     })}
     </>
   )
 }
+
+
+// function Example(){
+
+//   const initialState = [
+//     {id: 1, name:"nitesh",country: 'Canada'},
+//     {id: 2, name:"sameet",country: 'Belgium'},
+//     {id: 3,name:"sonal", country: 'Canada'},
+//   ];
+
+//   const [data,setData] = useState(initialState);
+
+//   const updateState = () => {
+//     const newState = data.map(obj => {
+//       if(obj.country !== 'Canada'){
+//         return{
+//           ...obj,
+//           name:'mayur',
+//           country:'dubai'
+//         }
+//       }
+//       // otherwise return the object property
+//       return obj;
+//     });
+//     setData(newState);
+//   }
+
+
+
+//   return(
+//     <>
+//      <button onClick={updateState}>Update state</button>
+//      {data.map((obj) => {
+//       return(
+//         <div key={obj.id}>
+//             <h2>id: {obj.id}</h2>
+//             <h2>name: {obj.name}</h2>
+//             <h2>country: {obj.country}</h2>
+//             <hr />
+//         </div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+
+// function Example(){
+//   const datas = [
+//     {
+//       id: 1,
+//       name: 'Nick',
+//       age: 21
+//     },
+//     {
+//       id: 2,
+//       name: 'Lara',
+//       age: 30
+//     }
+//   ];
+
+//   const [data, setData] = useState(datas);
+
+//   const updateState = (index) => (e) => {
+//    const newArray = data.map((item,i) => {
+//     if(index === i){
+//       return {...item,[e.target.name]:e.target.value};
+//     }
+//     else{
+//       return item;
+//     }
+//    });
+//     setData(newArray);
+//   }
+
+
+//   return(
+//     <>
+//       <p>Hello, world 1!</p>
+//       {data.map((val) => {
+//         return(
+//           <div key={val.id}> 
+//             <p>{val.name}</p>
+//             <button onChange={updateState}>Change</button>
+//           </div>
+//         )
+//       })}
+//     </>
+//   )
+// }
+
+// function Example(){
+//   const [values, setValues] = useState({
+//     full_name: "nitesh arvind khatri",
+//     email: "xyz@gmail.com",
+//     password: "123",
+//     confirmPassword: "123",
+//     type: "front-end developer"
+//   });
+
+//   function handleChange(){
+//     setValues({ 
+//       ...values, 
+//       email: 'new Value'
+//     })
+//   }
+
+//   return(
+//     <>
+//      <p>{values.full_name}</p>
+//      <p>{values.email}</p>
+//      <p>{values.full_name}</p>
+//      <p>{values.password}</p>
+//      <p>{values.confirmPassword}</p>
+//      <p>{values.type}</p>
+//      <button onClick={handleChange}>Change</button>
+//     </>
+//   )
+// }
+
+// function Example(){
+
+//   const [useDetails,setUseDetails] = useState({
+//     name:'nitesh khatri',
+//     age:34,
+//     jobtitle:'front-end developer'
+//   })
+//   function handleChange(){
+//     setUseDetails({
+//       ...useDetails,
+//       name:'sameet khatri',
+//       age:41,
+//       jobtitle:'software developer'
+//     })
+//   }
+//   return(
+//     <>
+//       <h3>{useDetails.name}</h3>
+//       <p>{useDetails.age}</p>
+//       <p>{useDetails.jobtitle}</p>
+//       <button onClick={handleChange}>Click change text</button>
+//     </>
+//   )
+// }
+
+// function Example(){
+
+//   const [computer,setComputer] = useState({
+//     keyboard:'Dell',
+//     mouse:'hp'
+//   });
+
+//   const btnChange =()=>{
+//     setComputer(prevState => ({
+//       keyboard:'mac',
+//       mouse:'iball'
+//     }));
+//   }
+
+//   return(
+//     <>
+//      <h1>my favorite computer is {computer.keyboard}</h1>
+//      <h1>my favorite computer is {computer.mouse}</h1>
+//      <button onClick={btnChange}>Click</button>
+//     </>
+//   )
+// }
 
 
 // function Example(){
