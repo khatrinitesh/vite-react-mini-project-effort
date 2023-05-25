@@ -1,11 +1,12 @@
 import React from 'react';
-import CustomApp from './components/exportimportmodule/1/app';
+import CustomFormHooks from './components/formvalidation/6';
+
 
 function AppExample() {
   
   return (  
     <>
-     <CustomApp/>
+     <CustomFormHooks/>
     </>
   )
 }
