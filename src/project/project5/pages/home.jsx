@@ -4,12 +4,21 @@ import Banner from '../components/banner';
 // import ContextApi from '../components/contextapi';
 import PassingDataPC from '../components/passingdatafromparenttochild';
 // import ChartExample from '../components/chart';
+import JQueryCode from '../../../components/jquery';
+import { useNavigate } from 'react-router-dom';
 
-export default function Home() {
+
+export default function Home({login}) {
+  let navigate = useNavigate();
   return (
     <div>
       <Banner bannerTitle="Home" bannerDesc="Lorem Ipsum is paragraph"/>
-      <PassingDataPC/>
+      {/* <PassingDataPC/> */}
+      {/* <JQueryCode/> */}
+      <p>This is the Home Page</p>
+      <button onClick={()=>{login();navigate('/dashboard')}}>
+        Login
+      </button>
     </div>
   )
 }

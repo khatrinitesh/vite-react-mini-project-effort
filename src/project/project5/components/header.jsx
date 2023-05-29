@@ -11,11 +11,14 @@ export default function Header() {
         <li>
             <NavLink to="/about" activeClassName="active">About</NavLink>
         </li>
-        <li>
+        {/* <li>
             <NavLink to="/service" activeClassName="active">Service</NavLink>
-        </li>
+        </li> */}
         <li>
             <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+        </li>
+        <li>
+            <NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink>
         </li>
       </ul>
     </header>

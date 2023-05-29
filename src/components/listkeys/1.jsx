@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 // import {name,age} from './example';
 import Message from './example';
 
@@ -7,66 +7,99 @@ export default function ListKeysExample() {
   return (
     <>
       <Example/>
-      <Message/>
+      {/* <Message/> */}
     </>
   )
 }
 
 function Example(){
-  // const shoppingList = ['Oranges', 'Cassava', 'Garri', 'Ewa', 'Dodo', 'Books']
-
-  // const employees = [
-  //   {
-  //     name: 'Saka Manje',
-  //     address: '14, cassava-garri-ewa street',
-  //     gender: 'Male',
-  //   },
-  //   {
-  //     name: 'Wawawa Warisii',
-  //     address: '406, highway street',
-  //     gender: 'Male',
-  //   },
-  // ]
-
-  const employeesData = [
-    {
-      name: 'Saka manje',
-      address: '14, cassava-garri-ewa street',
-      attributes: {
-        height: '6ft',
-        hairColor: 'Brown',
-        eye: 'Black',
-      },
-      gender: 'Male',
-    },
-    {
-      name: 'Adrian Toromagbe',
-      address: '14, kogbagidi street',
-      attributes: {
-        height: '5ft',
-        hairColor: 'Black',
-        eye: 'Red',
-      },
-      gender: 'Male',
-    },
-  ]
-
+  const [emp,setEmp] = useState(employees)
   return(
     <>
-    {employeesData.map((val,index) => {
-      const {name,address,gender,height} = val
+    {emp.map((val) => {
       return(
-        <div key={index}>
-          <h3>Name: {name}</h3>
-          <p>Address: {address}</p>
-          <p>Gender: {gender}</p>
-          <p>Height: {height}</p>
-          <br/>
-        </div>
+        <div>{val.name} - {val.jobtitle}</div>
       )
     })}</>
   )
 }
+
+export const employees = [
+  {
+    id:1,
+    name:'nitesh',
+    experience:7,
+    jobtitle:'fe developer'
+  },
+  {
+    id:2,
+    name:'sameet',
+    experience:7,
+    jobtitle:'field service engineering'
+  },
+  {
+    id:3,
+    name:'vishal',
+    experience:12,
+    jobtitle:'sql developer'
+  },
+]
+
+// function Example(){
+//   // const shoppingList = ['Oranges', 'Cassava', 'Garri', 'Ewa', 'Dodo', 'Books']
+
+//   // const employees = [
+//   //   {
+//   //     name: 'Saka Manje',
+//   //     address: '14, cassava-garri-ewa street',
+//   //     gender: 'Male',
+//   //   },
+//   //   {
+//   //     name: 'Wawawa Warisii',
+//   //     address: '406, highway street',
+//   //     gender: 'Male',
+//   //   },
+//   // ]
+
+//   const employeesData = [
+//     {
+//       name: 'Saka manje',
+//       address: '14, cassava-garri-ewa street',
+//       attributes: {
+//         height: '6ft',
+//         hairColor: 'Brown',
+//         eye: 'Black',
+//       },
+//       gender: 'Male',
+//     },
+//     {
+//       name: 'Adrian Toromagbe',
+//       address: '14, kogbagidi street',
+//       attributes: {
+//         height: '5ft',
+//         hairColor: 'Black',
+//         eye: 'Red',
+//       },
+//       gender: 'Male',
+//     },
+//   ]
+
+//   return(
+//     <>
+//     {employeesData.map((val,index) => {
+//       const {name,address,gender,height} = val
+//       return(
+//         <div key={index}>
+//           <h3>Name: {name}</h3>
+//           <p>Address: {address}</p>
+//           <p>Gender: {gender}</p>
+//           <p>Height: {height}</p>
+//           <br/>
+//         </div>
+//       )
+//     })}</>
+//   )
+// }
 
 // function Example(){
 //     return(
