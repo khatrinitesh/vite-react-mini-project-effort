@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 // import {name,age} from './example';
-import Message from './example';
+// import Message from './example';
 
 export default function ListKeysExample() {
     
@@ -13,37 +13,84 @@ export default function ListKeysExample() {
 }
 
 function Example(){
-  const [emp,setEmp] = useState(employees)
-  return(
-    <>
-    {emp.map((val) => {
-      return(
-        <div>{val.name} - {val.jobtitle}</div>
-      )
-    })}</>
-  )
-}
 
-export const employees = [
+  const data = [
   {
     id:1,
     name:'nitesh',
-    experience:7,
-    jobtitle:'fe developer'
+    paragraph:'lorem ipsum',
   },
   {
     id:2,
     name:'sameet',
-    experience:7,
-    jobtitle:'field service engineering'
+    paragraph:'lorem ipsum',
   },
   {
     id:3,
     name:'vishal',
-    experience:12,
-    jobtitle:'sql developer'
+    paragraph:'lorem ipsum',
   },
 ]
+
+const [result,setResult] = useState(data)
+
+const btnRemove = (id) => {
+  const newData = result.filter((val) => val.id !== id)
+  setResult(newData);
+}
+  return(
+  <>
+     {result.map((val) =>{
+      return(
+        <List name={val.name} paragraph={val.paragraph} btnRemove={btnRemove}/>
+      )
+     })}
+    </>
+  )
+}
+
+function List({name,paragraph,btnRemove}){
+  return(
+    <>
+     <h3>{name}</h3>
+     <p>{paragraph}</p>
+     <button onClick={btnRemove}>&times;</button>
+    </>
+  )
+}
+
+// function Example(){
+//   const [emp,setEmp] = useState(employees)
+//   return(
+//     <>
+//     {emp.map((val) => {
+//       return(
+//         <div>{val.name} - {val.jobtitle}</div>
+//       )
+//     })}</>
+//   )
+// }
+
+// export const employees = [
+//   {
+//     id:1,
+//     name:'nitesh',
+//     experience:7,
+//     jobtitle:'fe developer'
+//   },
+//   {
+//     id:2,
+//     name:'sameet',
+//     experience:7,
+//     jobtitle:'field service engineering'
+//   },
+//   {
+//     id:3,
+//     name:'vishal',
+//     experience:12,
+//     jobtitle:'sql developer'
+//   },
+// ]
 
 // function Example(){
 //   // const shoppingList = ['Oranges', 'Cassava', 'Garri', 'Ewa', 'Dodo', 'Books']

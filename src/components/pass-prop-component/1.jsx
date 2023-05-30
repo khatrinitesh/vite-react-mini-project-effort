@@ -67,28 +67,28 @@ function Example(){
   )
 }
 
-const Input = styled.input`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: palevioletred;
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-`;
+// const Input = styled.input`
+//   padding: 0.5em;
+//   margin: 0.5em;
+//   color: palevioletred;
+//   background: papayawhip;
+//   border: none;
+//   border-radius: 3px;
+// `;
 
-const CustomInput = () => {
-  const [text,setText] = useState('');
-  function handleChange(e){
-    setText(e.target.value)
-  }
+// const CustomInput = () => {
+//   const [text,setText] = useState('');
+//   function handleChange(e){
+//     setText(e.target.value)
+//   }
 
-  return(
-    <>
-     <Input type="text" value={text} onChange={handleChange}/>
-     {text}
-    </>
-  )
-}
+//   return(
+//     <>
+//      <Input type="text" value={text} onChange={handleChange}/>
+//      {text}
+//     </>
+//   )
+// }
 
 
 // const List = ({users}) => {
@@ -206,14 +206,14 @@ const CustomInput = () => {
 //   )
 // }
 
-const Welcome = ({title,description}) => {
-  return(
-    <>
-     <Headline title={`Welcome to ${title}`}/>
-     <Descrption paragraph={description}/>
-    </>
-  )
-}
+// const Welcome = ({title,description}) => {
+//   return(
+//     <>
+//      <Headline title={`Welcome to ${title}`}/>
+//      <Descrption paragraph={description}/>
+//     </>
+//   )
+// }
 
 // const Welcome = ({text}) => {
 //   return(
@@ -224,8 +224,8 @@ const Welcome = ({title,description}) => {
 //   )
 // }
 
-const Headline = ({title}) => <h1>{title}</h1>
-const Descrption = ({paragraph}) => <p>{paragraph}</p>
+// const Headline = ({title}) => <h1>{title}</h1>
+// const Descrption = ({paragraph}) => <p>{paragraph}</p>
 
 // const Custom = () => {
 //   const greeting = "hello nitesh"

@@ -1,8 +1,6 @@
-import { tabsClasses } from '@mui/material';
 import React,{createContext,useContext, useEffect, useState} from 'react';
 import context from 'react-bootstrap/esm/AccordionContext';
 // import styled, { css } from "styled-components";
-
 import "bootstrap/dist/css/bootstrap.css";
 
 export default function ContextExample() {
@@ -16,45 +14,174 @@ export default function ContextExample() {
 }
 
 
+const userContext = createContext();
 
-export const NameContext = createContext();
+function Example(){
 
-function Example({name}){
   return(
     <>
-      <NameContext.Provider value={name}>
-        <ChildOne/>
-      </NameContext.Provider>
+     <Navbar/>
+     <userContext.Provider value={{user:'nitesh'}}>
+      <MainPage/>
+     </userContext.Provider>
     </>
   )
 }
+function Navbar() {
+  return <nav style={{ background: '#10ADDE', color: '#fff' }}>Demo App</nav>
+}
 
-function ChildOne(){
-  return(
-    <>
-    <ChildTwo/>
-    </>
-  )
-}
-function ChildTwo(){
-  return(
-    <>
-    <ChildThree/>
-    </>
-  )
-}
-function ChildThree(){
-  const name = useContext(NameContext)
-  return(
-    <>
-    {name} from child 3 
-    </>
+function MainPage() {
+  return (
+    <div className='main_content'>
+      <h3>Main Page</h3>
+      <Content />
+    </div>
   )
 }
 
-ContextExample.defaultProps = {
-  name:'nitesh'
+function Content() {
+  return (
+    <div className='inner_content'>
+      <Message />
+    </div>
+  )
 }
+
+function Message() {
+  const {user} = useContext(userContext)
+  return(
+    <div className='message_content'>
+     <h1>Welcome {user}:</h1>
+    </div>
+  )
+}
+
+
+
+// let FunctionExample = createContext(null);
+
+// function Example(){
+
+//   const [title,setTitle] = useState('sameet khatri')
+//   return(
+//     <FunctionExample.Provider value={{title}}>
+//       <ChildA/>
+//     </FunctionExample.Provider>
+//   )
+// }
+
+// function ChildA(){
+//   return(
+//     <>
+//     <h2>Child A</h2>
+//     <ChildB/>
+//     </>
+//   )
+// }
+
+// function ChildB(){
+//   return(
+//     <>
+//     <h2>Child B</h2>
+//     <ChildC/>
+//     </>
+//   )
+// }
+
+// function ChildC(){
+//   const {title} = useContext(FunctionExample)
+//   return(
+//     <>
+//     <h2>Child C</h2>
+//     {title}
+//     </>
+//   )
+// }
+
+
+// let ExampleContext = createContext(null)
+
+// function Example(){
+//   const [title, setTitle] = useState('Scaler Topics')
+//   return(
+//     <ExampleContext.Provider value={{title}}>
+//       <br/>
+//       <ChildA/>
+//     </ExampleContext.Provider>
+//   )
+// }
+// function ChildA(){
+//   return(
+//     <> 
+//     No child component is passed to this component
+//       <br />
+
+//       <ChildB />
+//     </>
+//   )
+// }
+
+// function ChildB() {
+//   return (
+//     <>
+//       No child component is passed to this component
+//       <br />
+//       <ChildC />
+//     </>
+//   )
+// }
+
+// function ChildC() {
+//   const { title } = useContext(ExampleContext)
+//   return (
+//     <>
+//       The props are passed to this component directly.
+//       <br />
+//       <h3> Welcome to</h3>
+//       <h4>{title}</h4>
+//     </>
+//   )
+// }
+
+// export const NameContext = createContext();
+
+// function Example({name}){
+//   return(
+//     <>
+//       <NameContext.Provider value={name}>
+//         <ChildOne/>
+//       </NameContext.Provider>
+//     </>
+//   )
+// }
+
+// function ChildOne(){
+//   return(
+//     <>
+//     <ChildTwo/>
+//     </>
+//   )
+// }
+// function ChildTwo(){
+//   return(
+//     <>
+//     <ChildThree/>
+//     </>
+//   )
+// }
+// function ChildThree(){
+//   const name = useContext(NameContext)
+//   return(
+//     <>
+//     {name} from child 3 
+//     </>
+//   )
+// }
+
+// ContextExample.defaultProps = {
+//   name:'nitesh'
+// }
 
 // function Example(){
 //   return(

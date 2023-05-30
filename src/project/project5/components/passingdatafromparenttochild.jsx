@@ -1,49 +1,64 @@
-import React,{ useState } from 'react'
+import React,{ useState } from 'react';
+import ChildCustom from './childcustom';
 
 export default function PassingDataPC() {
   return (
     <>
       {/* <ParentComponent/> */}
-      <Parent1/>
-      <Parent2/>
+      {/* <Parent1/>
+      <Parent2/> */}
+      <ParentExample/>
     </>
   )
 }
 
-// reusing components => By passing data to a child component, you can reuse the same component in different parts of your app with different data, making your code more modular and maintainable. For example, you can pass a different array of items as a prop to a child component and display different lists of items in different parts of your app.
-
-const Parent1 = () => {
-
-    const item = ['a','b','c']
-    return(
-        <Child item={item}/>
-    )
-}
-const Parent2 = () => {
-
-    const item2 = ['d','e','f']
-    return(
-        <Child item={item2}/>
-    )
-}
-
-const Child = ({item,btnRemove}) => {
+function ParentExample(){
+    const [textColor,setTextColor] = useState('red') 
 
     return(
         <>
-         <ul>
-                {item.map((val) => {
-                    return(
-                        <li key={val}>
-                            {val}
-                            <button onClick={btnRemove}>&times;</button>
-                        </li>
-                    )
-                })}
-         </ul>
+        <h2 style={{color:textColor}}>Parent Text</h2>
+        {/* <ChildCustom getColorfromChild={getColorfromChild}/> */}
         </>
     )
 }
+
+
+
+// reusing components => By passing data to a child component, you can reuse the same component in different parts of your app with different data, making your code more modular and maintainable. For example, you can pass a different array of items as a prop to a child component and display different lists of items in different parts of your app.
+
+// const Parent1 = () => {
+
+//     const item = ['a','b','c']
+//     return(
+//         <Child item={item}/>
+//     )
+// }
+// const Parent2 = () => {
+
+//     const item2 = ['d','e','f']
+//     return(
+//         <Child item={item2}/>
+//     )
+// }
+
+// const Child = ({item,btnRemove}) => {
+
+//     return(
+//         <>
+//          <ul>
+//                 {item.map((val) => {
+//                     return(
+//                         <li key={val}>
+//                             {val}
+//                             <button onClick={btnRemove}>&times;</button>
+//                         </li>
+//                     )
+//                 })}
+//          </ul>
+//         </>
+//     )
+// }
 
 /// displaying data 
 // const Parent = () => {

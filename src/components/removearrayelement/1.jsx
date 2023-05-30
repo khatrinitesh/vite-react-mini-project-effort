@@ -8,53 +8,77 @@ export default function RemoveArrayElementExmple() {
   )
 }
 
-class Example extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            favourites: [
-                { id: 1, label: 'baguettes' },
-                { id: 2, label: 'bread' },
-                { id: 3, label: 'potatoes' },
-                { id: 4, label: 'rice' },
-                { id: 5, label: 'pasta' },
-                { id: 6, label: 'chicken' },
-                { id: 7, label: 'beans' },
-                { id: 8, label: 'apples' },
-                { id: 9, label: 'oranges' },
-                { id: 10, label: 'grapes' },
-                { id: 11, label: 'biscuits' },
-            ],
-            color: "white",
-            rooms: 4
-        }
-    }
+function Example(){
+    const [fruits, setFruits] = useState([
+        { id: 1, name: "🍎 Apple" },
+        { id: 2, name: "🍊 Orange" },
+        { id: 3, name: "🍌 Banana" },
+        { id: 4, name: "🍇 Grapes" },
+      ])
+
+      const deleteByValue = (id) => {
+        setFruits(oldValue => {
+            return oldValue.filter(fruit => fruit.id !== id)
+        })
+      }
+    return(
+        <>
+         {fruits.map((val) => {
+            return(
+                <div key={val.id}>{val.name} - <button onClick={() => deleteByValue(val.id)}>Delete</button></div>
+            )
+         })}
+        </>
+    )
+}
+
+// class Example extends React.Component{
+//     constructor(props){
+//         super(props)
+//         this.state = {
+//             favourites: [
+//                 { id: 1, label: 'baguettes' },
+//                 { id: 2, label: 'bread' },
+//                 { id: 3, label: 'potatoes' },
+//                 { id: 4, label: 'rice' },
+//                 { id: 5, label: 'pasta' },
+//                 { id: 6, label: 'chicken' },
+//                 { id: 7, label: 'beans' },
+//                 { id: 8, label: 'apples' },
+//                 { id: 9, label: 'oranges' },
+//                 { id: 10, label: 'grapes' },
+//                 { id: 11, label: 'biscuits' },
+//             ],
+//             color: "white",
+//             rooms: 4
+//         }
+//     }
 
    
-    removeFavourite = (id) => {
-        const removeFav = this.state.favourites.slice();
-        removeFav.splice(id,1)
-        this.setState({
-            favourites:removeFav
-        })
-    }
+//     removeFavourite = (id) => {
+//         const removeFav = this.state.favourites.slice();
+//         removeFav.splice(id,1)
+//         this.setState({
+//             favourites:removeFav
+//         })
+//     }
 
-    render(){
-        return(
-            <>
-                {this.state.favourites.map((item,i) => {
-                    return(
-                        <div key={item.id}>
-                            {item.label}
-                            <button onClick={this.removeFavourite.bind(this,i)}>&times;</button>
-                        </div>
-                    )
-                })}
-                {this.state.color} = {this.state.rooms}
-            </>
-        )
-    }
-}
+//     render(){
+//         return(
+//             <>
+//                 {this.state.favourites.map((item,i) => {
+//                     return(
+//                         <div key={item.id}>
+//                             {item.label}
+//                             <button onClick={this.removeFavourite.bind(this,i)}>&times;</button>
+//                         </div>
+//                     )
+//                 })}
+//                 {this.state.color} = {this.state.rooms}
+//             </>
+//         )
+//     }
+// }
 
 // const initialList = [
 //     {
