@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+ul,ol{
+    list-style-type: none;
+    margin:0 !important;
+    padding:0;
+}
+
+header{
+    background-color: #222;
+    ul{
+        display: flex;
+        li{
+            a{
+                color:#fff;
+                padding: 10px;
+                display: block;
+                &.active{
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
+.main_content{
+    min-height: calc(100vh - 76px);
+    background-color: #f9f9f9;
+}
+footer{
+    background-color: #222;
+    color:#fff;
+    padding: 10px;
+}
+
+.mychildcomponent{
+    padding: 20px;
+}
+
+.main_content {
+    :is(.box1 .header,.box2 .header){
+        color:red;
+    }
+    :where(.box1,.box2){
+        background-color: orange;
+        margin:10px 0;
+    }
+}

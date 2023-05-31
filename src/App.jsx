@@ -1,12 +1,12 @@
 import React from 'react';
-import PropDrillingExample from './components/propdrilling/1';
+import CustomApp from './project/project6/app';
 
 
 function AppExample() {
   
   return (  
     <>
-     <PropDrillingExample/>
+     <CustomApp/>
     </>
   )
 }
