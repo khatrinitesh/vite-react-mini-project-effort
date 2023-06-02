@@ -1,12 +1,11 @@
 import React from 'react';
-import CustomApp from './project/project6/app';
-
+import FetchExample from './components/differentwaystofetchdata/1';
 
 function AppExample() {
   
   return (  
     <>
-     <CustomApp/>
+     <FetchExample/>
     </>
   )
 }

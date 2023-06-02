@@ -17,65 +17,122 @@ export default function FetchExample(){
 
 function Example(){
 
-  const { loading, data, error } = useFetch("https://reqres.in/api/users")
+  const [data,setData] = useState([])
+  const [loading,setLoading] = useState(false);
+  const [error,setError] = useState('');
 
-
-  if(loading){
-    return "loading";
+  const FetchData = async () => {
+    setLoading(true)
+    try{
+      const res = await fetch('https://fakestoreapi.com/products')
+      if(!res.ok){
+        throw new Error('sorry something went wrong')
+      }
+      const data = await res.json();
+      setData(data)
+      setLoading(false)
+    }
+    catch(error){
+      setError(error.message)
+      setLoading(false)
+    }
   }
-  else if(error){
-    return "error";
+
+  const btnRemove  = (id) => {
+    const newList = data.filter((val) => val.id !== id)
+    setData(newList)
   }
-  return (
-    <div className="App">
-      <h1>Hooks</h1>
-      <div>
-        {data.map((e) => {
-          return(
-            <>
-             {data.map((e) => (
-              <div className="" key={e.id}>
-                <img src={e.avatar} alt="Profile" />
-                <p> {e.first_name} {e.last_name}</p>
-                <p> {e.email}</p>
-              </div>
-            ))}
-            </>
-          )
-        })}
-      </div>
-    </div>
-  );
-}
-
-
-const useFetch = (url) => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
+    FetchData()
+  },[])
 
-    const getData = async () => {
-        try {
+  if(loading){
+    return(
+      <div>Loading...</div>
+    )
+  }
+  if(error){
+    return(
+      <div>Error</div>
+    )
+  }
+  return(
+    <>
+    {data.map((val) => {
+      return(
+        <>
+        <h2>{val.title}</h2>
+        <h3>{val.price}</h3>
+        <p>{val.rating.rate} - {val.rating.count}</p>
+        <button onClick={() => btnRemove(val.id)}>&times;</button>
+        </>
+      )
+    })}</>
+  )
+}
 
-            const response = await fetch(url);
-            const results = await response.json();
-            setLoading(false)
-            setData(results.data);
-            setError(false)
+// function Example(){
 
-        } catch (error) {
-            setLoading(false)
-            setError(false)
-            setError(error)
-        }
-    }
-    getData();
-}, [url]);
+//   const { loading, data, error } = useFetch("https://reqres.in/api/users")
 
-return {loading,data,error}
-};
+
+//   if(loading){
+//     return "loading";
+//   }
+//   else if(error){
+//     return "error";
+//   }
+//   return (
+//     <div className="App">
+//       <h1>Hooks</h1>
+//       <div>
+//         {data.map((e) => {
+//           return(
+//             <>
+//              {data.map((e) => (
+//               <div className="" key={e.id}>
+//                 <img src={e.avatar} alt="Profile" />
+//                 <p> {e.first_name} {e.last_name}</p>
+//                 <p> {e.email}</p>
+//               </div>
+//             ))}
+//             </>
+//           )
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+// const useFetch = (url) => {
+//   const [loading, setLoading] = useState(true);
+//   const [data, setData] = useState([]);
+//   const [error, setError] = useState(false);
+
+//   useEffect(() => {
+
+//     const getData = async () => {
+//         try {
+
+//             const response = await fetch(url);
+//             const results = await response.json();
+//             setLoading(false)
+//             setData(results.data);
+//             setError(false)
+
+//         } catch (error) {
+//             setLoading(false)
+//             setError(false)
+//             setError(error)
+//         }
+//     }
+//     getData();
+// }, [url]);
+
+// return {loading,data,error}
+// };
 
 // function Example(){
 //   const emojis = [
