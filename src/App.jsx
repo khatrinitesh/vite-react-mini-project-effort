@@ -1,11 +1,11 @@
 import React from 'react';
-import FetchExample from './components/differentwaystofetchdata/1';
+import UseParam from './components/router/useParams/2/app';
 
 function AppExample() {
   
   return (  
     <>
-     <FetchExample/>
+     <UseParam/>
     </>
   )
 }
