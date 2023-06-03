@@ -9,7 +9,7 @@ function Main() {
     <Router>
         <Routes> 
             <Route path="/"  element={<Cards/>} />
-            <Route path="/read" element={<Read/>} />
+            <Route path="/read/:name/:love/:earn" element={<Read/>} />
         </Routes>
       </Router>
     </>

@@ -1,18 +1,18 @@
 import React from "react";
 import {Card,CardGroup} from "react-bootstrap";
-import {Link,  useNavigate} from "react-router-dom";
+import {Link,  useNavigate, useParams} from "react-router-dom";
 
 function Read() {   
 	let location = useNavigate();
 	console.log(location);
 
+	const {name,love,earn} = useParams()
+	console.log(name);
+
 	return (
 		<>
 				<Link to="/">
-				<Card.Link>
-					{" "}
-					<h1 className="mt-3">Back... </h1>{" "}
-				</Card.Link>
+				Back... 
 			</Link>
 			<CardGroup>
 				<Card>
@@ -24,8 +24,9 @@ function Read() {
 					<Card.Body>
 						<Card.Title className="mt-5">Card by read</Card.Title>
 						<Card.Text>
-							{location.pathname}
-                            {location.this.state.name}
+							{name}
+							{love}
+							{earn}
 							This is a wider card with supporting text below as a natural
 							lead-in to additional content. This content is a little bit
 							longer.
@@ -38,3 +39,4 @@ function Read() {
 }
 
 export default Read;
+``
