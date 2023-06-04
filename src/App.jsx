@@ -1,11 +1,12 @@
 import React from 'react';
-import UseParam from './components/router/useParams/2/app';
+import PropDrillingExample from './components/propdrilling/1';
+
 
 function AppExample() {
   
   return (  
     <>
-     <UseParam/>
+     <PropDrillingExample/>
     </>
   )
 }

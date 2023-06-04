@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import styled from 'styled-components';
 
 export default function PropDrillingExample() {
   return (
@@ -8,44 +9,113 @@ export default function PropDrillingExample() {
   )
 }
 
-function Example(){
 
-  const [data,setData] = useState('nitesh khatri is data')
+
+function Example(){
+  const [data,setData] = useState('nitesh khatri')
   return(
-    <ParentComp>
-      <ComponentOne>
-        <ComponentTwo data={data}/>
-      </ComponentOne>
-    </ParentComp>
+    <>
+     <ParentComp>
+      <CompOne>
+        <CompTwo data={data}/>
+      </CompOne>
+     </ParentComp>
+    </>
   )
 }
+
+const StyledDiv = styled.div`
+ width:200px,;
+ height:200px;
+ margin:20px;
+ color:white;
+ padding:15px;
+ background-color:${props => props.completed ? 'green' : 'red'}
+`
+
+
+const StyledDivOne = styled.div`
+height: ${props => props.size === 'small' ? '30px' : '60px'};
+width: ${props => props.size === 'small' ? '30px' : '60px'};
+display: ${props => props.dflex ? "flex" : "none"};
+opactiy: ${props => props.opac ? 1 : 0}; 
+color:${props => props.status === 'excellent' ? 'purple'
+: props.status === 'very good' ? 'white'
+: props.status === 'good' ? 'green'
+: 'cyan'};
+padding:20px;
+background-color:${props => 
+    props.category === 'Study' ? 'green' 
+  : props.category === 'Work' ? 'red' 
+  : props.category === 'Shopping' ? 'orange'  
+  : 'blue'};
+`
 
 function ParentComp({children}){
   return(
-    <div className='parentcomp'>
-      <h3>this is parent component</h3>
-      {children}
-    </div>
+    <>
+     <h2>parent component</h2>
+     <StyledDiv completed={false}>styling</StyledDiv>
+     <StyledDivOne status='excellent' size="large" opac={false} dflex={true} category='Shopping'>Small Size</StyledDivOne>
+     {children}
+    </>
+  )
+}
+function CompOne({children}){
+  return(
+    <>
+     <h2>Component One</h2>
+     {children}
+    </>
+  )
+}
+function CompTwo({data}){
+  return(
+    <>
+     <h2 style={{color:'red'}}>Component Two</h2>
+     <p>Welcome {data}</p>
+    </>
   )
 }
 
-function ComponentOne({children}){
-  return(
-    <div className='comp1'>
-      <h3>This is component one</h3>
-      {children}
-    </div>
-  )
-}
+// function Example(){
 
-function ComponentTwo({data}){
-  return(
-    <div className='comp2'>
-      <h3>This is component two</h3>
-      <h3>Welcome, {data}</h3>
-    </div>
-  )
-}
+//   const [data,setData] = useState('nitesh khatri is data')
+//   return(
+//     <ParentComp>
+//       <ComponentOne>
+//         <ComponentTwo data={data}/>
+//       </ComponentOne>
+//     </ParentComp>
+//   )
+// }
+
+// function ParentComp({children}){
+//   return(
+//     <div className='parentcomp'>
+//       <h3>this is parent component</h3>
+//       {children}
+//     </div>
+//   )
+// }
+
+// function ComponentOne({children}){
+//   return(
+//     <div className='comp1'>
+//       <h3>This is component one</h3>
+//       {children}
+//     </div>
+//   )
+// }
+
+// function ComponentTwo({data}){
+//   return(
+//     <div className='comp2'>
+//       <h3>This is component two</h3>
+//       <h3>Welcome, {data}</h3>
+//     </div>
+//   )
+// }
 
 // function Example(){
 
