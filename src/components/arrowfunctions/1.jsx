@@ -1,32 +1,64 @@
 import React from 'react'
+import { useState } from 'react'
 
 export default function ArrowsFunctionExample() {
   return (
     <>
         {/* <Hi data="nitesh khatri"/> */}
-        <Example/>
+        {/* <Example/> */}
         {/* <Example data='nitesh khatri'/>  */}
+        <Counter/>
     </>
   )
 }
 
-class Example extends React.Component{
-  oneParmeter = a => e => {
-    console.log(a)
-  }
+const Counter = () => {
+  const [counter,setCounter] = useState(0)
 
-  twoParmeter = (a,b) => e => {
-    console.log(a+b)
+  const btnInc= () => {
+    setCounter(counter => counter + 1)
   }
-  render(){
-    return(
-      <>
-       <button onClick={this.oneParmeter(10)}>one parameter</button>
-       <button onClick={this.twoParmeter(20,30)}>two parameter</button>
-      </>
-    )
+  const btnDec= () => {
+    setCounter(counter => counter - 1)
   }
+  const btnReset= () => {
+    setCounter(0)
+  }
+  return(
+    <>
+    {counter}
+    <button onClick={btnInc}>+</button>
+    <button onClick={btnDec}>-</button>
+    <button onClick={btnReset}>Reset</button>
+    </>
+  )
 }
+
+// const Multiple = (a,b) => {
+//   return(
+//     <>
+//      {11+12}
+//     </>
+//   )
+// }
+
+// class Example extends React.Component{
+//   oneParmeter = a => e => {
+//     console.log(a)
+//   }
+
+//   twoParmeter = (a,b) => e => {
+//     console.log(a+b)
+//   }
+//   render(){
+//     return(
+//       <>
+//        <button onClick={this.oneParmeter(10)}>one parameter</button>
+//        <button onClick={this.twoParmeter(20,30)}>two parameter</button>
+//       </>
+//     )
+//   }
+// }
 
 // function factory(){
 //   return (a,b) => a+b 

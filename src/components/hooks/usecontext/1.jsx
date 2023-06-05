@@ -2,6 +2,7 @@ import React,{createContext,useContext, useEffect, useState} from 'react';
 import context from 'react-bootstrap/esm/AccordionContext';
 // import styled, { css } from "styled-components";
 import "bootstrap/dist/css/bootstrap.css";
+import ColorContext from './colorcontenxt';
 
 export default function ContextExample() {
   return (
@@ -13,49 +14,105 @@ export default function ContextExample() {
   )
 }
 
-
-const userContext = createContext();
-
 function Example(){
-
   return(
     <>
-     <Navbar/>
-     <userContext.Provider value={{user:'nitesh'}}>
-      <MainPage/>
-     </userContext.Provider>
+     <AppContextObject.Provider value={AppContextObject}>
+      {props.children}
+     </AppContextObject.Provider>
     </>
   )
 }
-function Navbar() {
-  return <nav style={{ background: '#10ADDE', color: '#fff' }}>Demo App</nav>
-}
 
-function MainPage() {
-  return (
-    <div className='main_content'>
-      <h3>Main Page</h3>
-      <Content />
-    </div>
-  )
-}
 
-function Content() {
-  return (
-    <div className='inner_content'>
-      <Message />
-    </div>
-  )
-}
-
-function Message() {
-  const {user} = useContext(userContext)
+function Parent(){
+  
   return(
-    <div className='message_content'>
-     <h1>Welcome {user}:</h1>
-    </div>
+    <ColorContext.Provider value={colors}>
+      <Child/>
+    </ColorContext.Provider>
   )
 }
+
+function Child(){
+  const colors = useContext(ColorContext)
+  return(
+    <>
+      <p style={{backgroundColor:colors.blue}}>Child component</p>
+    </>
+  )
+}
+
+
+// const Superb = createContext();
+// function Parent(){
+//   const [state,setState] = useState({
+//     data:'Hello world'
+//   })
+//   return(
+//     <>
+//     <Superb.Provider value={{state}}>
+//       <Child/>
+//     </Superb.Provider>
+//     </>
+//   )
+// }
+// function Child(props){
+//   const data = useContext(Superb)
+//   return(
+//     <>
+//       {data}
+//       Another method of passing state to another component is via context. 
+//       Context provides a way to share data across the entire component tree 
+//       without having to pass props down manually at every level. 
+//       This can be useful for data that needs to be available globally.
+//     </>
+//   )
+// }
+
+
+// const userContext = createContext();
+
+// function Example(){
+
+//   return(
+//     <>
+//      <Navbar/>
+//      <userContext.Provider value={{user:'nitesh'}}>
+//       <MainPage/>
+//      </userContext.Provider>
+//     </>
+//   )
+// }
+// function Navbar() {
+//   return <nav style={{ background: '#10ADDE', color: '#fff' }}>Demo App</nav>
+// }
+
+// function MainPage() {
+//   return (
+//     <div className='main_content'>
+//       <h3>Main Page</h3>
+//       <Content />
+//     </div>
+//   )
+// }
+
+// function Content() {
+//   return (
+//     <div className='inner_content'>
+//       <Message />
+//     </div>
+//   )
+// }
+
+// function Message() {
+//   const {user} = useContext(userContext)
+//   return(
+//     <div className='message_content'>
+//      <h1>Welcome {user}:</h1>
+//     </div>
+//   )
+// }
 
 
 

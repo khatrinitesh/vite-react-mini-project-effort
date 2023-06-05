@@ -10,47 +10,48 @@ export default function AddArrayElementExmple() {
   )
 }
 
-
-const person = [
+const initialList = [
   {
-    id:1,name:'nitesh'
+    id:1,name:'nitesh',age:34
   },
   {
-    id:2,name:'urvashi'
+    id:2,name:'urvashi',age:64
   },
   {
-    id:3,name:'arvind'
+    id:3,name:'arvind',age:68
   },
   {
-    id:4,name:'sameet'
+    id:4,name:'sameet',age:41
   },
 ]
 
 
 function Example(){
-
-  const [list,setList] = useState(person)
+  const [list,setList] = useState(initialList);
   const [name,setName] = useState('');
+  const [age,setAge] = useState('');
 
-  const btnChange =(e)=>{
+  const btnChange = (e) => {
+    e.preventDefault()
     setName(e.target.value)
   }
 
   const btnAdd = () => {
-    const newList = list.concat({name,id:uuidv4()})
+    const newList = list.concat({name,age,id:uuidv4()})
     setList(newList)
     setName('');
+    setAge('');
   }
 
-  const btnDel= (id) => {
+  const btnDel = (id) => {
     const newList = list.filter((val) => val.id !== id)
     setList(newList)
   }
 
   return(
     <>
-     <AddItem name={name} handleChange={btnChange} handleAdd={btnAdd}/>
-     <List list={list} onDel={btnDel}/>
+     <AddItem handleAdd={btnAdd} handleChange={btnChange}/>
+     <List onDel={btnDel} list={list} />
     </>
   )
 }
@@ -58,25 +59,94 @@ function Example(){
 const AddItem = ({name,handleChange,handleAdd}) => {
   return(
     <>
-     <input type="text" value={name} onChange={handleChange}/>
-     <button onClick={handleAdd}>Add</button>
+      <input type="text" value={name} onChange={handleChange}/>
+      <button onClick={handleAdd}>Add</button>
     </>
   )
 }
-const List = ({list,onDel}) => {
+const List = ({onDel,list})  => {
   return(
-    <ul>
+    <>
      {list.map((val) => {
       return(
         <li key={val.id}>
-          {val.name}
+          <h3>{val.name}</h3>
           <button onClick={() => onDel(val.id)}>&times;</button>
         </li>
       )
      })}
-    </ul>
+    </>
   )
 }
+
+
+
+// const person = [
+//   {
+//     id:1,name:'nitesh'
+//   },
+//   {
+//     id:2,name:'urvashi'
+//   },
+//   {
+//     id:3,name:'arvind'
+//   },
+//   {
+//     id:4,name:'sameet'
+//   },
+// ]
+
+
+// function Example(){
+
+//   const [list,setList] = useState(person)
+//   const [name,setName] = useState('');
+
+//   const btnChange =(e)=>{
+//     setName(e.target.value)
+//   }
+
+//   const btnAdd = () => {
+//     const newList = list.concat({name,id:uuidv4()})
+//     setList(newList)
+//     setName('');
+//   }
+
+//   const btnDel= (id) => {
+//     const newList = list.filter((val) => val.id !== id)
+//     setList(newList)
+//   }
+
+//   return(
+//     <>
+//      <AddItem name={name} handleChange={btnChange} handleAdd={btnAdd}/>
+//      <List list={list} onDel={btnDel}/>
+//     </>
+//   )
+// }
+
+// const AddItem = ({name,handleChange,handleAdd}) => {
+//   return(
+//     <>
+//      <input type="text" value={name} onChange={handleChange}/>
+//      <button onClick={handleAdd}>Add</button>
+//     </>
+//   )
+// }
+// const List = ({list,onDel}) => {
+//   return(
+//     <ul>
+//      {list.map((val) => {
+//       return(
+//         <li key={val.id}>
+//           {val.name}
+//           <button onClick={() => onDel(val.id)}>&times;</button>
+//         </li>
+//       )
+//      })}
+//     </ul>
+//   )
+// }
 
 // const initialList = [
 //   {

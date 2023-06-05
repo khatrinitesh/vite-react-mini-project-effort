@@ -4,79 +4,98 @@ import styled from 'styled-components';
 export default function PropDrillingExample() {
   return (
     <>
-      <Example />
+      <Parent />
     </>
   )
 }
 
+function Parent(){
 
+  function ClickAlert(){
+    console.log('click alert')
+  }
 
-function Example(){
-  const [data,setData] = useState('nitesh khatri')
   return(
     <>
-     <ParentComp>
-      <CompOne>
-        <CompTwo data={data}/>
-      </CompOne>
-     </ParentComp>
+     <Child data='Click here' onChildClick={ClickAlert}/>
     </>
   )
 }
-
-const StyledDiv = styled.div`
- width:200px,;
- height:200px;
- margin:20px;
- color:white;
- padding:15px;
- background-color:${props => props.completed ? 'green' : 'red'}
-`
-
-
-const StyledDivOne = styled.div`
-height: ${props => props.size === 'small' ? '30px' : '60px'};
-width: ${props => props.size === 'small' ? '30px' : '60px'};
-display: ${props => props.dflex ? "flex" : "none"};
-opactiy: ${props => props.opac ? 1 : 0}; 
-color:${props => props.status === 'excellent' ? 'purple'
-: props.status === 'very good' ? 'white'
-: props.status === 'good' ? 'green'
-: 'cyan'};
-padding:20px;
-background-color:${props => 
-    props.category === 'Study' ? 'green' 
-  : props.category === 'Work' ? 'red' 
-  : props.category === 'Shopping' ? 'orange'  
-  : 'blue'};
-`
-
-function ParentComp({children}){
+const Child = ({data, onChildClick,children}) => {
   return(
-    <>
-     <h2>parent component</h2>
-     <StyledDiv completed={false}>styling</StyledDiv>
-     <StyledDivOne status='excellent' size="large" opac={false} dflex={true} category='Shopping'>Small Size</StyledDivOne>
-     {children}
-    </>
+    <div className='child_block'>
+     <button onClick={onChildClick}>{data}</button>
+    </div>
   )
 }
-function CompOne({children}){
-  return(
-    <>
-     <h2>Component One</h2>
-     {children}
-    </>
-  )
-}
-function CompTwo({data}){
-  return(
-    <>
-     <h2 style={{color:'red'}}>Component Two</h2>
-     <p>Welcome {data}</p>
-    </>
-  )
-}
+
+
+// function Example(){
+//   const [data,setData] = useState('nitesh khatri')
+//   return(
+//     <>
+//      <ParentComp>
+//       <CompOne>
+//         <CompTwo data={data}/>
+//       </CompOne>
+//      </ParentComp>
+//     </>
+//   )
+// }
+
+// const StyledDiv = styled.div`
+//  width:200px,;
+//  height:200px;
+//  margin:20px;
+//  color:white;
+//  padding:15px;
+//  background-color:${props => props.completed ? 'green' : 'red'}
+// `
+
+
+// const StyledDivOne = styled.div`
+// height: ${props => props.size === 'small' ? '30px' : '60px'};
+// width: ${props => props.size === 'small' ? '30px' : '60px'};
+// display: ${props => props.dflex ? "flex" : "none"};
+// opactiy: ${props => props.opac ? 1 : 0}; 
+// color:${props => props.status === 'excellent' ? 'purple'
+// : props.status === 'very good' ? 'white'
+// : props.status === 'good' ? 'green'
+// : 'cyan'};
+// padding:20px;
+// background-color:${props => 
+//     props.category === 'Study' ? 'green' 
+//   : props.category === 'Work' ? 'red' 
+//   : props.category === 'Shopping' ? 'orange'  
+//   : 'blue'};
+// `
+
+// function ParentComp({children}){
+//   return(
+//     <>
+//      <h2>parent component</h2>
+//      <StyledDiv completed={false}>styling</StyledDiv>
+//      <StyledDivOne status='excellent' size="large" opac={false} dflex={true} category='Shopping'>Small Size</StyledDivOne>
+//      {children}
+//     </>
+//   )
+// }
+// function CompOne({children}){
+//   return(
+//     <>
+//      <h2>Component One</h2>
+//      {children}
+//     </>
+//   )
+// }
+// function CompTwo({data}){
+//   return(
+//     <>
+//      <h2 style={{color:'red'}}>Component Two</h2>
+//      <p>Welcome {data}</p>
+//     </>
+//   )
+// }
 
 // function Example(){
 

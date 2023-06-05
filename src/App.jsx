@@ -1,12 +1,11 @@
 import React from 'react';
-import PropDrillingExample from './components/propdrilling/1';
-
+import FormValidationExample from './components/formvalidation/1';
 
 function AppExample() {
   
   return (  
     <>
-     <PropDrillingExample/>
+     <FormValidationExample/>
     </>
   )
 }
