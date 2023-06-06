@@ -1,11 +1,12 @@
 import React from 'react';
-import FormValidationExample from './components/formvalidation/1';
+import CustomApp from './project/project7/app';
+
 
 function AppExample() {
   
   return (  
     <>
-     <FormValidationExample/>
+     <CustomApp/>
     </>
   )
 }

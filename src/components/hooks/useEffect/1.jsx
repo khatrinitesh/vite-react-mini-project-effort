@@ -12,22 +12,33 @@ export default function UseEffectExample() {
 }
 
 function Example(){
-  const [count,setCount] = useState(0);
-
-  const getResult = useCallback(() => {
-    return 2 * 2
-  });
-
-
-  useEffect(() => {
-    setCount(count => count + 1)
-  },[getResult])
+  const url = 'https://jsonplaceholder.typicode.com/posts'
+  const [data,setData] = useState('nitesh khatri')
   return(
     <>
-     <p>value of count: {count}</p>
+    <h1>Tutorialspoint</h1>
+    <h3>{data}</h3>
     </>
   )
 }
+
+// function Example(){
+//   const [count,setCount] = useState(0);
+
+//   const getResult = useCallback(() => {
+//     return 2 * 2
+//   });
+
+
+//   useEffect(() => {
+//     setCount(count => count + 1)
+//   },[getResult])
+//   return(
+//     <>
+//      <p>value of count: {count}</p>
+//     </>
+//   )
+// }
 
 // function Example(){
 //     // const [example,setExample] = useState('');
