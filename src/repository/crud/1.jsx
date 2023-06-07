@@ -11,35 +11,159 @@ export default function CrudExample() {
 }
 
 function Example(){
-  const [list, setList] = React.useState([]);
 
-  const handleAdd = () => {
-    const items = list; 
-    setList([...items,`item-${items.length}`])
-  }
+  const [task,setTask] = useState('')
+  const [todo,setTodo] = useState([])
+  const [editId,setEditId] = useState(0);
 
-  const handleRemove= () => {T
-    const items = list; 
-    if(items.length > 0){
-      const lastIndex = items.length - 1;
-      setList(items.filter((item,index) => index !== lastIndex))
+  const btnAdd = () => {
+    if(!task == ''){
+      setTodo([...todo,{task,index:`${task}-${Date.now()}`}]);
+      setTask('');
+    }
+    if(editId){
+      const editTask = todo.find((i) => i.index === editId)
+      const updatedTasks = todo.map((t) => 
+        t.index === editTask.index ? t = {index:t.index,task} : {index:t.index,task:t.task})
+      setTodo(updatedTasks);
+      setEditId(0);
+      return;
     }
   }
+
+  const btnEdit =(index) => {
+    const editTask = todo.find((i) => i.index === index);
+    setTodo(editTask.task)
+    setEditId(index)
+  }
+
+  const btnDel = (index) => {
+    const newTaskList = todo;
+    newTaskList.splice(index,1);
+    setTodo([...newTaskList])
+  }
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setTask(e.target.value);
+  }
+
   return(
     <>
-     <div>List: {list.length} total items</div>
-     <button onClick={handleAdd}>+</button>
-     <button onClick={handleRemove}>-</button>
-     {list.map((item,index) => {
+    <h1 className='title'> Todo App </h1>
+    <input type='text' value={task} onChange={handleChange } />
+    <button onClick={btnAdd}> Add </button>
+    {todo.map((task) => {
       return(
-        <li key={index}>
-          {item}
-        </li>
+        <Task btnDel={btnDel} btnEdit={btnEdit} task={task.task} index={task.index}/>
       )
-     })}
+    })}
     </>
   )
 }
+
+function Task({task,btnDel,btnEdit,index}) {
+  return(
+    <>
+     <h1>{task}</h1>
+     <button onClick={() => btnDel(index)}>Del</button>
+     <button onClick={() => btnEdit(index)}>Edit</button>
+    </>
+  )
+}
+
+
+// function Example(){
+//   const [todo,setTodo] = useState('')
+//   const [todoList,setTodolist] = useState([]);
+
+//   const btnAdd = () => {
+//     if(!todo !== ""){
+//       setTodolist([...todoList,todo])
+//       setTodo('')
+//     }
+//   }
+
+//   const btnDel = (text) => {
+//     const newTodoList = todoList.filter((val) => {
+//       return val !== text
+//     })
+//     setTodolist(newTodoList)
+//   }
+
+//   return(
+//     <>
+//       <TaskInput btnAdd={btnAdd} setTodo={setTodo} todo={todo} />
+//       <TaskList btnDel={btnDel} list={todoList}/>
+//     </>
+//   )
+// }
+// function TaskInput({todo,setTodo,btnAdd}) {
+
+//   const handleChange = (e) => {
+//     e.preventDefault();
+//     setTodo(e.target.value)
+//   }
+//   return(
+//     <>
+//      <input type="text" value={todo} name="todo" onChange={handleChange}/>
+//      <button onClick={btnAdd}>Add</button>
+//     </>
+//   )
+// }
+
+// function TaskList({list,btnDel}){
+//   return(
+//     <>
+//     {list.length > 0 ? (
+//       <ul>
+//       {list.map((val,index) => {
+//         return(
+//           <li key={index}>
+//             {val}
+//             <button onClick={() => btnDel(val)}>&times;</button>
+//           </li>
+//         )
+//       })}
+//       </ul>
+//     ) : (<div><p>no task found</p></div>)}
+    
+//     </>
+//   )
+// }
+
+
+
+// function Example(){
+//   const [list, setList] = React.useState([]);
+
+//   const handleAdd = () => {
+//     const items = list; 
+//     setList([...items,`item-${items.length}`])
+//   }
+
+//   const handleRemove= () => {T
+//     const items = list; 
+//     if(items.length > 0){
+//       const lastIndex = items.length - 1;
+//       setList(items.filter((item,index) => index !== lastIndex))
+//     }
+//   }
+//   return(
+//     <>
+//      <div>List: {list.length} total items</div>
+//      <button onClick={handleAdd}>+</button>
+//      <button onClick={handleRemove}>-</button>
+//      {list.map((item,index) => {
+//       return(
+//         <li key={index}>
+//           {item}
+//         </li>
+//       )
+//      })}
+//     </>
+//   )
+// }
 
 // function Example(){
 //     const [modalOpen, setModalOpen] = useState(false);
