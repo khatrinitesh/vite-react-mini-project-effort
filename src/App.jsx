@@ -1,12 +1,12 @@
 import React from 'react';
-import CustomApp from './project/project7/app';
+import AssignmentOne from './assignment/assignment';
 
 
 function AppExample() {
   
   return (  
     <>
-     <CustomApp/>
+     <AssignmentOne/>
     </>
   )
 }
