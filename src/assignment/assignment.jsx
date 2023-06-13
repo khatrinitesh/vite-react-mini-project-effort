@@ -1,5 +1,16 @@
-import React,{ useEffect,useCallback ,useMemo}  from 'react';
-import { useState } from 'react';
+import React,{ useState,useEffect,useCallback ,useMemo, createContext, useContext }  from 'react';
+// import {
+//     Button,
+//     EditableText,
+//     InputGroup,
+//     Toaster,
+//     Position,
+//   } from "@blueprintjs/core";
+  import './custom.css';
+import { ImageSearch } from '@mui/icons-material';
+import { functionsIn } from 'lodash';
+import "bootstrap/dist/css/bootstrap.css";
+
 
 export default function AssignmentOne() {
   return (
@@ -9,40 +20,1098 @@ export default function AssignmentOne() {
   )
 }
 
+// example 31 => fetch data on button click
+// function Example(){
+//   const [data, setData] = useState([]);
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [err, setErr] = useState('');
+
+//   const handleClick = async () => {
+//     setIsLoading(true)
+//     try{
+//       const response = await fetch('https://reqres.in/api/users',{
+//         method:'GET',
+//         headers:{
+//           Accept:'application/json,'
+//         },
+//       });
+//       if(!response.ok){
+//         throw new Error(`Error! status: ${response.status}`);
+//       }
+//       const result = await response.json();
+//       console.log('result is:',JSON.stringify(result,null,4));
+//       setData(result.data)
+//     }
+//     catch(err){
+//       setErr(err.message)
+//     }
+//     finally{
+//       setIsLoading(false)
+//     }
+//   }
+
+//   console.log(data);
+//   return(
+//     <>
+//      {/* {err & <div>{err}</div>} */}
+
+//      <button onClick={handleClick}>fetch data</button>
+
+//      {isLoading && <h2>Loading...</h2>}
+
+//      {data.map((person) => {
+//       return(
+//         <div key={person.id}>
+//           <h2>{person.email}</h2>
+//           <h2>{person.first_name}</h2>
+//           <h2>{person.last_name}</h2>
+//           <br/>
+//         </div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+
+// example 30 => fetch api data on button click 
+// function Example(){
+//   const [data,setData] = useState([]);
+
+// useEffect(() => {
+//   fetch('https://jsonplaceholder.typicode.com/albums')
+//   .then((res) => res.json())
+//   .then((data) => setData(data))
+// })
+//   return(
+//     <>
+//      {data.map((val) => {
+//       return(
+//         <div>{val.title}</div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+// function Example(){
+//   const [data, setData] = useState(null);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//         const response = await fetch(`https://jsonplaceholder.typicode.com/albums/1`)
+//         const newData = await response.json()
+//         setData(newData)
+//     };
+
+//       fetchData();
+//   }, [])
+
+//   if(data){
+//     console.log(data)
+//     return(
+//       <div>{data.title}</div>
+//     )
+//   }
+//   else{
+//     return null;
+//   }
+// }
+// function Example(){
+//   const [id,setId] = useState('')
+//   const [data,setData] = useState(null)
+
+//   const handleClick = async () => {
+//     try{
+//       const data = await(await fetch(`https://jsonplaceholder.typicode.com/albums/${id}`)).json()
+//       setData(data)
+//       console.log(setData(data))
+//     }
+//     catch(err){
+//       console.log(err.message)
+//     }
+//   }
+//   const handleChange = (e) => {
+//     e.preventDefault();
+//     setId(e.target.value)
+//   }
+//   return(
+//     <>
+//      <input type="text" required="required" placeholder='Enter an ID' value={id} onChange={handleChange}/>
+//      <button type="submit" onClick={handleClick} >Search</button>
+//     </>
+//   )
+// }
+
+// example 29 => conditional rendering 
+// function Example(){
+//   const [list,setList] = useState([
+//     {id:1,name:'apple'},
+//     {id:2,name:'banana'},
+//   ])
+
+//   const itemCounter = list.length
+//   return(
+//     <>
+//      {itemCounter === 0 ? <h1>no items to buy</h1> : list.map((val) => {
+//       return(
+//         <ShoppingItem  key={val.id} id={val.id} name={val.name}/>
+//       )
+//      })}
+//     </>
+//   )
+// }
+// const ShoppingItem = (props) => {
+//   return(
+//     <>
+//      <p>{props.id} - </p>
+//      <p>{props.name}</p>
+//     </>
+//   )
+// }
+// function Example(){
+//   const [list,setList] = useState([
+//     {id:1,name:'apple'},
+//     {id:2,name:'banana'},
+//   ])
+
+//   const itemsCounter = list.length
+//   return(
+//     <>
+//      {itemsCounter === 0 ?  <h1>no items to buy</h1>  : list.map((val) => {
+//       return(
+//         <ShoppingList key={val.id} name={val.name} id={val.id}/>
+//       )
+//      })} 
+//     </>
+//   )
+// }
+
+// const ShoppingList = (props) => {
+//   const {id,name} = props
+//   return(
+//     <>
+//      <h3>{id}</h3>
+//      <p>{name}</p>
+//     </>
+//   )
+// }
+
+
+// example 28 => componentDidMount and componentWillUnMount (class component)
+// class Example extends React.Component{
+
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       visible:true
+//     }
+//   }
+
+//   componentDidMount(){
+//     console.log('component did mount')
+//   }
+
+//   componentWillUnmount(){
+//     console.log('component will unmount')
+//   }
+
+//   handleMount = () => {
+//     this.setState({
+//       visible:true
+//     })
+//   }
+//   handleUnMount = () => {
+//     this.setState({
+//       visible:false
+//     })
+//   }
+
+
+//   render(){
+//     return(
+//       <>
+//         <button onClick={this.handleMount}>Mount my component</button>
+//         <button onClick={this.handleUnMount}>Unmount my component</button>
+//         {this.state.visible && <Nitesh/>}
+//       </>
+//     )
+//   }
+// }
+
+// function Nitesh(){
+//   return(
+//     <>nitesh khatri</>
+//   )
+// }
+
+// example 27 => comment source code
+// function Example(){
+//   return(
+//     <>
+//      {
+//         //Some comment here...
+//         //Some comment here...
+//       }
+//       <div>Users:</div>
+//       {/*
+//         <div>
+//           <span>Name:</span>
+//           <span>John</span>
+//         </div>
+//       */}
+//     </>
+//   )
+// }
+
+// example 26 => class component force re-render
+// class Example extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       counter:0
+//     }
+//     this.handleCount = this.handleCount.bind(this)
+//   }
+//   handleCount = () => {
+//     this.setState({
+//       counter:this.state.counter + 1
+//     })
+//   }
+//   render(){
+//     return(
+//       <>
+//       {this.state.counter}
+//        <button onClick={this.handleCount}>Force re-rendering</button>
+//       </>
+//     )
+//   }
+// }
+
+// example 25 => checkbox example 
+// function Example(){
+
+//   const [agreement,setAgreement] = useState(false);
+//   const handleChange = (e) => {
+//     e.preventDefault(
+//       setAgreement(e.target.checked)
+//     )
+//   }
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(`checked: ${agreement}`)
+//   }
+
+//   return(
+//     <>
+//      <form onSubmit={handleSubmit}>
+//       <label>
+//         <input type="checkbox" onChange={handleChange}/>
+//         Label 1
+//         <button>Submit</button>
+//       </label>
+//      </form>
+//     </>
+//   )
+// }
+
+// example 24 => checkbox class components
+// class Example extends React.Component{
+
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       agreement:false
+//     }
+//   }
+
+//   handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(`checked:  ${this.state.agreement}`)
+//   }
+
+//   handleChange = (e) =>{
+//     this.setState({
+//       agreement:e.target.checked
+//     })
+//   }
+
+//   render(){
+//     return(
+//       <> 
+//         <form onSubmit={this.handleSubmit}>
+//           <label>
+//             <input type="checkbox" checked={this.state.agreement} onChange={this.handleChange}/>
+//           </label>
+//         <button type="submit">Submit</button>
+//         </form>
+//       </>
+//     )
+//   }
+// }
+
+// example 23 => async image loading 
+// function Example(){
+//     return(
+//         <>
+//             <AsyncImage src="https://dirask.com/static/bucket/1574890428058-BZOQxN2D3p--image.png"/>
+//             <AsyncImage src="https://img.freepik.com/free-photo/blossom-floral-bouquet-decoration-colorful-beautiful-flowers-background-garden-flowers-plant-pattern-wallpapers-greeting-cards-postcards-design-wedding-invites_90220-1103.jpg"/>
+//             <AsyncImage src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg"/>
+            
+//         </>
+//     )
+// }
+// const AsyncImage = (props) => {
+//     const [loadedSrc, setLoadedSrc] = useState(null);
+
+//     useEffect(() => {
+//         setLoadedSrc(null);
+//         if (props.src) {
+//             const handleLoad = () => {
+//               setLoadedSrc(props.src);
+//           };
+//           const image = new Image();
+//           image.addEventListener('load', handleLoad);
+//             image.src = props.src;
+//           return () => {
+//                 image.removeEventListener('load', handleLoad);
+//           };
+//       }
+//   }, [props.src]);
+//     if (loadedSrc === props.src) {
+//       return (
+//           <img {...props} />
+//       );
+//   }
+//     return null;
+// };
+
+// example 22 => pure component
+// class Example extends React.PureComponent{
+//     render(){
+//         const {points=0} = this.props;
+//         return(
+//             <>
+//              <span>{points}</span>
+//             </>
+//         )
+//     }
+// }
+
+// example 21 => array as state 
+// function Example(){
+//     const [list,setList] = useState(['one','two','three']);
+
+//     // const handleAddClick = () => {
+//     //     const num = list.length + 1
+//     //     setList([...list,'added-'+num])
+//     // }
+
+//     const btnDel = (index) => {
+//         list.splice(index,1)
+//         setList([...list])
+//     }
+
+//     // const handleDelClick =()=> {
+//     //     setList(list.filter((item) => item !== 'two'))
+//     // }
+
+//     const handleDelClick =()=> {
+//         setList(list.map((item,index) => item === 'two' ? 'new-two-value' : item))
+//     }
+
+//     return(
+//         <>
+//          {list.map((val,index) => {
+//             return(
+//                 <div key={index}>
+//                     {val}
+//                     <button onClick={() => btnDel(index)}>&times;</button>
+//                 </div>
+//             )
+//          })}
+//          {/* <button onClick={handleAddClick}>Add</button> */}
+//          <button onClick={handleDelClick}>Delete items</button>
+//         </>
+//     )
+// }
+// // example 20 => animation with transition property
+// function Example(){
+//     const myComponentNormal = {
+//         width: '120px',
+//         height: '120px',
+//         background: 'goldenrod',
+//         transition: '0.5s'
+//     }
+    
+//     const myComponentBig = {
+//         width: '200px',
+//         height: '200px',
+//         background: 'yellowgreen',
+//         transition: '0.5s'
+//     }
+
+//     const [bigSize, setBigSize] = React.useState(false);
+//   	const handleClick = () => setBigSize(!bigSize);
+//     return(
+//         <>
+//         <div style={{height: '220px'}}>
+//             <div style={bigSize ? myComponentBig : myComponentNormal} >
+//             <button onClick={handleClick}>Change size</button>
+//             </div>
+//         </div>
+//         </>
+//     )
+// }
+
+
+// example 19 
+// function Example(){
+//     const [progress,setProgress] = useState(25);
+//     return(
+//         <>
+//             <ProgressBar progress={progress}/>
+//             <br/>
+//             <div>
+//                 <button className={progress === 0 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(0)}>0%</button>
+//                 <button className={progress === 5 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(5)}>5%</button>
+//                 <button className={progress === 15 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(15)}>15%</button>
+//                 <button className={progress === 25 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(25)}>25%</button>
+//                 <button className={progress === 50 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(50)}>50%</button>
+//                 <button className={progress === 75 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(75)}>75%</button>
+//                 <button className={progress === 100 ? 'btn btn-success' : 'btn btn-primary'} onClick={() => setProgress(100)}>100%</button>
+//             </div>
+//         </>
+//     )
+// }
+
+// const ContainerStyle = {
+//     border: '1px solid silver',
+//   	background: '#c5c5c5'
+// }
+
+// const ContentStyle = {
+//     background: '#00cc00',
+//   	height: '24px',
+//   	textAlign: 'center',
+//   	lineHeight: '24px',
+//   	fontFamily: 'sans-serif',
+//   	transition: '0.3s'
+// }
+
+// const ProgressBar = ({progress}) => {
+//     const state = `${progress}%`;
+//     return(
+//         <div style={{...ContainerStyle}}>
+//             <div style={{...ContentStyle,width:state}}>
+//                 {progress > 5 ? state : ''}
+//             </div>
+//         </div>
+//     )
+// }
+
+// example 18
+// function Example(){
+//     const DivScroll = {
+//     width:'100px',
+//     height:'100px',
+//     overflowX:'scroll',
+//     overflowY: 'hidden',
+// }
+
+    
+//     return(
+//         <>
+//         <div style={{height:'200px'}}>
+//             <div style={DivScroll}>
+//                 In officia nulla irure eu mollit veniam est exercitation est tempor. Amet elit id magna esse laboris sit qui elit. Et cupidatat sint eiusmod aliqua velit pariatur dolor esse qui. Minim quis ipsum minim laborum amet ex magna consectetur laboris.  In officia nulla irure eu mollit veniam est exercitation est tempor. Amet elit id magna esse laboris sit qui elit. Et cupidatat sint eiusmod aliqua velit pariatur dolor esse qui. Minim quis ipsum minim laborum amet ex magna consectetur laboris.
+//             </div>
+//          </div>
+//         </>
+//     )
+// }
+
+
+// // example 17
+// function Example(){
+    // const DivScroll = {
+//     width:'100px',
+//     height:'100px',
+//     overflowY: 'scroll'
+// }
+
+    
+//     return(
+//         <>
+//         <div style={{height:'100px'}}>
+//             <div style={DivScroll}>
+//                 In officia nulla irure eu mollit veniam est exercitation est tempor. Amet elit id magna esse laboris sit qui elit. Et cupidatat sint eiusmod aliqua velit pariatur dolor esse qui. Minim quis ipsum minim laborum amet ex magna consectetur laboris.  In officia nulla irure eu mollit veniam est exercitation est tempor. Amet elit id magna esse laboris sit qui elit. Et cupidatat sint eiusmod aliqua velit pariatur dolor esse qui. Minim quis ipsum minim laborum amet ex magna consectetur laboris.
+//             </div>
+//          </div>
+//         </>
+//     )
+// }
+
+// example 16 
+// class Example extends React.Component{
+
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             color:'yellow'
+//         }
+//         this.btnToggle = this.btnToggle.bind(this)
+//     }
+
+//     btnToggle = () => {
+//         this.setState({color:this.state.color === 'yellow' ? 'orange' : 'yellow'})
+//     }
+//     render(){
+//         return(
+//             <>
+//             <p onClick={this.btnToggle} style={{backgroundColor:this.state.color}}>This is paragraph.</p>
+//             </>
+//         )
+//     }
+// }
+
+// example 15 
+// function Example(){
+//     const [color, setColor] = useState('yellow');
+
+//     const btnClick  =() => {
+//         setColor(color === 'yellow' ? 'orange' : 'yellow')
+//     }
+
+//     return(
+//         <>
+//          <p onClick={btnClick} style={{backgroundColor:color}}>nitesh khatri</p>
+//         </>
+//     )
+// }
+
+// example 14 
+// const style1 = {
+//     color:'orange'
+// }
+// const style2 = {
+//     color:'red'
+// }
+// const style3 = {
+//     color:'green'
+// }
+// const MyComponent = (props) => {
+//     const CustomTag = `h${props.priority}`
+
+//     return(
+//         <>
+//          <CustomTag style={props.style}>priority = ${props.priority}</CustomTag>
+//         </>
+//     )
+// }
+// function Example(){
+//     return(
+//         <>
+//             <MyComponent style={style1} priority="1"/>
+//             <MyComponent style={style2} priority="2"/>
+//             <MyComponent style={style3} priority="3"/>
+//         </>
+//     )
+// }
+
+// example 13 
+// function Example(){
+//     const [list,setList] = useState([]);
+
+//     const btnDel = () => {
+//         const items = list;
+//         if (items.length > 0) {
+//             const lastIndex = items.length - 1;
+//             setList(items.filter((item, index) => index !== lastIndex));
+//         }
+//     }
+
+//     const btnAdd = () => {
+//         const newItems = list;
+//         setList([...list,`item-${newItems.length}`])
+//     }
+
+//     return(
+//         <>
+//             List: {list.length} total items.
+//             <button onClick={btnAdd}>+</button>
+//             <button onClick={btnDel}>-</button>
+//             <ul>
+//                 {list.map((val,index) => {
+//                     return(
+//                         <li key={index}>
+//                             {val}
+//                         </li>
+//                     )
+//                 })}
+//             </ul>
+//         </>
+//     )
+// }
+
+// example 12
+// class Example extends React.Component{
+
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             items:[]
+//         }
+//     }
+
+//     handleAddItem = () => {
+//         const items = this.state.items;
+//         this.setState({ items: [...items, 'item-' + items.length] });
+//       };
+    
+//       handleRemoveItem = () => {
+//         const items = this.state.items;
+//         if(items.length > 0){
+//             const lastIndex = items.length - 1;
+//             this.setState({items:items.filter((item,index) => index !== lastIndex)})
+//         }
+//       };
+
+
+//     render(){
+//         const items = this.state.items;
+//         return(
+//             <>
+//              <div>List : {items.length} total items.</div>
+//              <button onClick={this.handleAddItem}>+</button>
+//              <button onClick={this.handleRemoveItem}>-</button>
+//              <ul>
+//                 {items.map((item,index) => {
+//                     return(
+//                         <>
+//                          <li key={index}>{item}</li>
+//                         </>
+//                     )
+//                 })}
+//              </ul>
+//             </>
+//         )
+//     }
+// }
+
+
+// example 11 
+// function Example(){
+//     return(
+//         <>
+//         <FunctionOne data="who needs me"/>
+//         </>
+//     )
+// }
+
+// function FunctionOne({data}){
+//     return(
+//         <>
+//          One component 
+//          <hr/>
+//          <FunctionTwo data={data}/>
+//         </>
+//     )
+// }
+// function FunctionTwo({data}){
+//     return(
+//         <>
+//          Two component 
+//          <hr/>
+//          <ComponentCombined data={data}/>
+//         </>
+//     )
+// }
+// function ComponentCombined({data}){
+//     return(
+//         <>
+//          <h2>{data}</h2>
+//         </>
+//     )
+// }
+
+// example 10
+// function Example(){
+//     return(
+//         <>
+//          <FirstComponent content="Who needs me"/>
+//         </>
+//     )
+// }
+// function FirstComponent({content}){
+//     return(
+//         <>
+//          <h3>I am the first component</h3>
+//          <SecondComponent content={content}/>
+//         </>
+//     )
+// }
+// function SecondComponent({content}){
+//     return(
+//         <>
+//         <h3>I am the second component</h3>
+//          <ThirdComponent content={content}/>
+//         </>
+//     )
+// }
+// function ThirdComponent({content}){
+//     return(
+//         <>
+//          <h3>I am the third component</h3>
+//          <ComponentNeedingProps content={content}/>
+//         </>
+//     )
+// }
+// function ComponentNeedingProps({content}){
+//     return(
+//         <>
+//          <h2>{content}</h2>
+//         </>
+//     )
+// }
+
+// example 9 
+// let context = createContext();
+// function Example(){
+//     const [fname,setFname] = useState('nitesh')
+//     const [lname,setLname] = useState('khatri')
+
+
+//     return(
+//         <>
+//          <context.Provider value={{fname,lname}}>
+//             <ChildA/>
+//          </context.Provider>
+//         </>
+//     )
+// }
+
+// function ChildA(){
+//     return(
+//         <>Child A   <ChildB/></>
+//     )
+// }
+
+// function ChildB(){
+//     return(
+//         <>Child B {" "}
+//           <ChildC/>
+//         </>
+//     )
+// }
+// function ChildC(){
+//     const {fname,lname} = useContext(context); 
+//     return(
+//         <>
+//          {fname} {lname}
+//         </>
+//     )
+// }
+
+
+// example 8 
+// function Example(){
+//     const [data,setData] = useState("some state");
+//     return(
+//         <>
+//            <ParentComp>
+//             <ComponentOne>
+//                 <ComponentTwo data={data}/>
+//             </ComponentOne>
+//            </ParentComp>
+//         </>
+//     )
+// }
+// function ParentComp({children}) {
+//     return(
+//         <>
+//          <p>This is Parent Component</p>
+//          {children}
+//         </>
+//     )
+// }
+// function ComponentOne({children}){
+//     return(
+//         <>
+//          <h3>This is Component one</h3>
+//          {children}
+//         </>
+//     )
+// }
+// function ComponentTwo({data}){
+//     return(
+//         <>
+//          <h3>This is Component two with the received state {data}</h3>
+//         </>
+//     )
+// }
+
+
+
+
+// example 7 
+// const userContext = createContext();
+// function Example(){
+//     return(
+//         <>
+//         <Navbar/>
+//          <userContext.Provider value={{user:'nitesh'}}>
+//             <MainPage/>
+//          </userContext.Provider>
+//         </>
+//     )
+// }
+
+// function Navbar(){
+//     return(
+//         <>
+//          <nav style={{ background: "#10ADDE", color: "#fff" }}>Demo App</nav>
+//         </>
+//     )
+// }
+
+// function MainPage(){
+//     return(
+//         <>
+//           <h3>Main Page</h3>
+//           <Content/>
+//         </>
+//     )
+// }
+
+// function Content(){
+//     return(
+//         <div>
+//             <Message />
+//         </div>
+//     )
+// }
+// function Message(){
+//     const {user} = useContext(userContext);
+//     return(
+//         <> 
+//         <p>Welcome, {user}</p>
+//         </>
+//     )
+// }
+
+/// example 6 
+// function Example(){
+    // const AppToaster  = Toaster.create({
+    //     position:Position.TOP
+    //   })
+//     const [users,setUsers] = useState([]);
+//     const [newName,setNewName] = useState('');
+//     const [newEmail,setNewEmail] = useState('');
+//     const [newWebsite,setNewWebsite] = useState('');
+
+//     const addUser = () => {
+//         const name = newName.trim();
+//         const email = newEmail.trim();
+//         const website = newWebsite.trim();
+
+//         if(name && email && website){
+//             fetch('https://jsonplaceholder.typicode.com/users',{
+//                 method:'POST',
+//                 body:JSON.stringify({
+//                     name,email,website,
+//                 }),
+//                 headers:{
+//                     "Content-type": "application/json; charset=UTF-8",
+//                 },
+//             })
+//             .then((response) => response.json())
+//             .then((data) => {
+//                 setUsers([...users,data]);
+//                 setNewName('');
+//                 setNewEmail('');
+//                 setNewWebsite('');
+//                 AppToaster.show({
+//                     message:'User added successfully',
+//                     intent:'success',
+//                     timeout:3000,
+//                 })
+//             })
+//         }
+//     }
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/users')
+//         .then((response) => response.json())
+//         .then((json) => setUsers(json));
+//     })
+
+//     const onChangeHandler = (id,key,value) => {
+//         setUsers((values) => {
+//             return values.map((item) => {
+//                 item.id === id ? {...item,[key]:value}:item
+//             })
+//         })
+//     }
+
+//     const updateUser = (id) => {
+//         const user = users.find((user) => user.id === id);
+//         fetch(`https://jsonplaceholder.typicode.com/users/${id}`,{
+//             method:"PUT",
+//             body:JSON.stringify(user),
+//             headers:{
+//                 "Content-type": "application/json; charset=UTF-8",
+//             }
+//         })
+//         .then((response) => response.json())
+//         .then(() => {
+//             AppToaster.show({
+//                 message: "User updated successfully",
+//                 intent: "success",
+//                 timeout: 3000,
+//               });
+//         })
+//     }
+
+//     const deleteUser = (id) => {
+//         fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
+//             method:"DELETE",
+//         })
+//         .then((response) => response.json())
+//         .then(() => {
+//             setUsers((values) => {
+//                 return values.filter((item) => item.id !== id);
+//             })
+//             AppToaster.show({
+//                 message: "User deleted successfully",
+//                 intent: "success",
+//                 timeout: 3000,
+//             })
+//         })
+//     }
+    
+//     return(
+//         <>
+//          <table class="bp4-html-table .modifier">
+//             <thead>
+//             <tr>
+//                 <th>Id</th>
+//                 <th>Name</th>
+//                 <th>Email</th>
+//                 <th>Website</th>
+//                 <th>Action</th>
+//             </tr>
+//             </thead>
+//             <tbody>
+//                 {users.map((user) => {
+//                     return(
+//                         <tr key={user.id}>
+//                             <td>{user.id}</td>
+//                             <td>{user.name}</td>
+//                             <td>
+//                                 <EditableText value={user.email} onChange={(value) => onChangeHandler(user.id,'email',value)}/>
+//                             </td>
+//                             <td>
+//                                 <EditableText value={user.website} onChange={(value) => onChangeHandler(user.id,'website',value)}/>
+//                             </td>
+//                             <td>
+//                             <Button intent="primary" onClick={() => updateUser(user.id)}>
+//                                 Update
+//                             </Button>
+//                             <Button intent="danger" onClick={() => deleteUser(user.id)}>
+//                              Delete
+//                             </Button>
+//                             </td>
+//                         </tr>
+//                     )
+//                 })}
+//             </tbody>
+//             <tfoot>
+//                 <tr>
+//                     <td>
+//                         <InputGroup value={newName} onChange={(e) => setNewName(e.target.value)} placeholder='add name here....'/>
+//                     </td>
+//                     <td>
+//                         <InputGroup value={newEmail} onChange={(e) => setNewEmail(e.target.value)} placeholder='add email here....'/>
+//                     </td>
+//                     <td>
+//                         <InputGroup value={newWebsite} onChange={(e) => setNewWebsite(e.target.value)} placeholder='add website here....'/>
+//                     </td>
+//                     <td>
+//                         <Button intent="success" onClick={addUser}>Add user</Button>
+//                     </td>
+
+//                 </tr>
+//             </tfoot>
+//         </table>
+//         </>
+//     )
+// }
+
 // example 5 
-function Example(){
-    const url = 'https://jsonplaceholder.typicode.com/posts'
-    const [list,setList] = useState([])
+// function Example(){
+//     const url = 'https://jsonplaceholder.typicode.com/posts'
+//     const [list,setList] = useState([])
+//     const [value,setValue] = useState('')
 
-    const fetchData = () => {
-        fetch(url)
-        .then((res) => res.json())
-        .then((result) => setList(result))
-    }
+//     const fetchData = () => {
+//         fetch(url)
+//         .then((res) => res.json())
+//         .then((result) => setList(result))
+//     }
 
-    useEffect(() => {
-        fetchData()
-    },[])
-    return(
-        <>
-         {list.map((val,index) => {
-            return(
-                <Superb key={index} title={val.title} body={val.body}/>
-            )
-         })}
-        </>
-    )
-}
-const Superb = ({title,body}) => {
-    return(
-        <>
-         <div className='card'>
-            <h3>{title}</h3>
-            <p>{body}</p>
-         </div>
-        </>
-    )
-}
+//     useEffect(() => {
+//         fetchData()
+//     },[])
+
+//     const handleDel = (index) => {
+//         // list.splice(index,1)
+//         // setList([...list])
+//         const newTaskList = list;
+//         newTaskList.splice(index,1);
+//         setList([...newTaskList])
+//     }
+    
+//     const handleChange = (e) => {
+//         setValue(e.target.value)
+//     }
+
+//     const handleAdd = () => {
+//         setList([...list],value)
+//     }
+
+
+//     return(
+//         <>
+//         <InputField value={value} onHandleChange={handleChange} onAdd={handleAdd}/>
+//          {list.map((val,index) => {
+//             return(
+//                 <Superb key={index} title={val.title} body={val.body} onDel={handleDel}/>
+//             )
+//          })}
+//         </>
+//     )
+// }
+
+// const InputField = ({title,onHandleChange,onAdd}) => {
+
+//     return(
+//         <>
+//          <input type="text" value={title} onChange={onHandleChange}/>
+//          <button onClick={onAdd}>&#43;</button>
+//         </>
+//     )
+// }
+// const Superb = ({title,body,onDel}) => {
+//     return(
+//         <>
+//          <div className='card'>
+//             <h3>{title}</h3>
+//             <p>{body}</p>
+//             <button onClick={() => onDel()}>&times;</button>
+//          </div>
+//         </>
+//     )
+// }
 
 
 // example 4 
