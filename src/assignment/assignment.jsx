@@ -1,4 +1,4 @@
-import React,{ useState,useEffect,useCallback ,useMemo, createContext, useContext }  from 'react';
+import React,{ useState,useEffect,useCallback ,useMemo, createContext, useContext, useReducer, useRef }  from 'react';
 // import {
 //     Button,
 //     EditableText,
@@ -8,8 +8,10 @@ import React,{ useState,useEffect,useCallback ,useMemo, createContext, useContex
 //   } from "@blueprintjs/core";
   import './custom.css';
 import { ImageSearch } from '@mui/icons-material';
-import { functionsIn } from 'lodash';
+import { functionsIn, parseInt } from 'lodash';
 import "bootstrap/dist/css/bootstrap.css";
+import { render } from 'react-dom';
+import './custom.css'
 
 
 export default function AssignmentOne() {
@@ -19,6 +21,489 @@ export default function AssignmentOne() {
     </>
   )
 }
+
+// example 44 => inline stying object
+function Example(){
+  const myComponentStyle = {
+    height: '200px',
+    width: '200px',
+    background: 'goldenrod',
+    textAlign: 'center'
+
+}
+  return(
+    <>
+     <h1 style={myComponentStyle}>Heading title</h1>
+     <h1 className='my-component-style'>Heading title</h1>
+    </>
+  )
+}
+
+// example 43 => how to pass props
+// function Example(){
+
+//   const admin = {name:'nitesh',age:34}
+
+//   return(
+//     <>
+//      <h2>Option 1</h2>
+//      <User name="nitesh" age={34}/>
+//      <hr/>
+//      <h2>Option 2</h2>
+//      <User name={admin.name} age={admin.age}/>
+//      <hr/>
+//      <h2>Option 3</h2>
+//      <User name={admin.name} age={admin.age}/>
+//      <hr/>
+//      <h2>Option 4</h2>
+//      <User {...admin}/>
+//     </>
+//   )
+// }
+// const User = ({name,age}) => {
+//   return(
+//     <>
+//      <h4>{name} - {typeof name}</h4>
+//      <p>{age}- {typeof age}</p>
+//     </>
+//   )
+// }
+
+// example 42 => how to create dynaimc table data 
+// const GROUP_1 = [
+//   { id: 1, name: 'Tom',  age: 22 },
+//   { id: 2, name: 'Adam', age: 43 },
+//   { id: 3, name: 'Mark', age: 16 },
+//   { id: 4, name: 'John', age: 29 }
+// ]
+// const GROUP_2 = [
+//   { id: 1, name: 'Kate', age: 23 },
+//   { id: 2, name: 'Ann',  age: 18 }
+// ];
+
+// function Example(){
+//   const [students,setStudents] = useState(GROUP_1);
+ 
+//   return(
+//     <>
+//        <div>
+//         <div>
+//           <button onClick={() => setStudents(GROUP_1)}>Show GROUP_1</button>
+//           <button onClick={() => setStudents(GROUP_2)}>Show GROUP_2</button>
+//         </div>
+//         <br />
+//         <Table students={students} />
+//       </div >
+//     </>
+//   )
+// }
+// const students = [
+//   { id: 1, name: 'Tom',  age: 25 },
+//   { id: 2, name: 'Adam', age: 43 },
+//   { id: 3, name: 'Mark', age: 16 },
+//   { id: 4, name: 'John', age: 29 }
+// ]
+// function Table({students}){
+//   const tableStyle = {
+//     border: '1px solid black',
+//     borderCollapse: 'collapse'
+// }
+
+// const tdStyle = {
+//   	border: '1px solid black',
+// };
+//   return(
+//     <>
+//      <div>
+//       <table style={tableStyle}>
+//         <tr>
+//           <th style={tdStyle}>Id</th>
+//           <th style={tdStyle}>Name</th>
+//           <th style={tdStyle}>Age</th>
+//         </tr>
+//         {students.map(({ id, name, age }) => (
+//           <tr key={id}>
+//             <td style={tdStyle}>{id}</td>
+//             <td style={tdStyle}>{name}</td>
+//             <td style={tdStyle}>{age}</td>
+//           </tr>
+//         ))}
+//       </table>
+//      </div>
+//     </>
+//   )
+// }
+
+// example 41 => get value of an input element
+// function Example(){
+
+//   const [username,setUsername] = useState('your username');
+//   const inputRef = useRef();
+
+//   const handleChange = (e) => {
+//     setUsername(inputRef.current.value)
+//   }
+//   return(
+//     <>
+//     <h1>{username}</h1>
+//     <div>
+//       <label>insert username:</label>
+//       <input type="text" ref={inputRef} onChange={handleChange}/>
+//     </div>
+//     </>
+//   )
+// }
+
+// example 40 => get react component size before render operation 
+// function Example(){
+
+//   const reference = useRef();
+//   const [dimensions,setDimensions] = useState({
+//     width:0,
+//     height:0
+//   })
+
+//   useEffect(() => {
+//     if(reference.current){
+//       setDimensions({
+//         width:reference.current.offsetWidth,
+//         height:reference.current.offsetHeight,
+//       })
+//     }
+//   },[])
+//   return(
+//     <>
+//       <div ref={reference}>
+//         <pre>
+//           Container <br/>
+//           - width : {dimensions.width}
+//           - height : {dimensions.height}
+//         </pre>
+//       </div>
+//     </>
+//   )
+// }
+
+// example 39 => get number value from an input 
+// function Example(){
+//   const [number,setNumber] = useState(20);
+//   const inputRef = useRef();
+
+//   const handleChange =(e)=>{
+//     e.preventDefault();
+//     setNumber(parseInt(inputRef.current.value))
+//   }
+
+//   return(
+//     <>
+//       <h2>{number}</h2>
+//      <label>insert number</label>
+//      <input type="text" ref={inputRef} onChange={handleChange}/>
+//     </>
+//   )
+// }
+
+// example 38 => get input reference
+// function Example(){
+
+//   const inputRef = useRef();
+//   return(
+//     <>
+//      <input defaultValue="Example text here..." ref ={inputRef}/>
+//      <button onClick={() => console.log(inputRef.current)}>check reference</button>
+//      <button onClick={() => console.log(inputRef.current.value)}>check value</button>
+//     </>
+//   )
+// }
+
+// example 37 => get div reference
+// function Example(){
+//   const divStyle = {
+//       height: '20px',
+//       background: 'yellow',
+//       border: 'solid',
+//       borderColor: 'red'
+//   };
+//   const divRef = useRef();
+//   return(
+    
+//     <>
+//     <div ref={divRef} style={divStyle}>
+//       <b>My Div</b>
+//     </div>
+//     <div onClick={() => console.log(divRef.current)}>Check reference</div>
+//     <div onClick={() => console.log(divRef.current.innerHTML)}>Check reference</div>
+//     <div onClick={() => console.log(divRef.current.innerText)}>Check reference</div>
+//     <div onClick={() => console.log(divRef.current.outerHTML)}>Check reference</div>
+//     </>
+//   )
+// }
+
+// example 36 => select inputs 
+// function Example(){
+//   const [state,setState] = useState({
+//     level:'master'
+//   })
+
+//   const handleChange =(e)=>{
+//     e.preventDefault();
+//     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+//     setState({
+//       ...state,
+//       [e.target.name]:value
+//     })
+//   }
+//   return(
+//     <>
+//      <form>
+//       <div>
+//         <label>Acolyte
+//           <input type="radio" name="level" value="acolyte" checked={state.level ==='acolyte'} onChange={handleChange}/>
+//         </label>
+//       </div>
+//       <div>
+//       <label>
+//           Master
+//           <input
+//             type="radio"
+//             name="level"
+//             value="master"
+//             checked={state.level === "master"}
+//             onChange={handleChange}
+//           />
+//         </label>
+//       </div>
+//       {state.level}
+//      </form>
+//     </>
+//   )
+// }
+// function Example(){
+//   const [state,setState] = useState({
+//     version:'16.8'
+//   })
+
+//   const handleChange =(e)=>{
+//     e.preventDefault();
+//     setState(e.target.value)
+//   }
+
+//   return(
+//     <>
+//      <form>
+//       <label>
+//         Favorite version
+//         <select name="version" value={state} onChange={handleChange}>
+//           <option value="16.8">v16.8.0</option>
+//           <option value="16.7">v16.7.0</option>
+//           <option value="16.6">v16.6.0</option>
+//           <option value="16.5">v16.5.0</option>
+//         </select>
+//       </label>
+//      </form>
+//      {state}
+//     </>
+//   )
+// }
+
+// example 35 => form reset class and functional components
+// class Example extends React.Component{
+
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       data:{}
+//     }
+//   }
+
+//   handleChange = (e) => {
+//     e.preventDefault();
+//     const target = e.target;
+//     this.setState({
+//       data:{...this.state.data,[target.name]:target.value}
+//     })
+//   }
+
+//   handleSubmit = (e) => {
+//     e.preventDefault();
+//     this.setState({
+//       state:this.state.data
+//     })
+//     console.log(this.state.data)
+//   }
+
+
+//   render(){
+//     return(
+//       <>
+//        <form onSubmit={this.handleSubmit}>
+//         <div>
+//           <label>Username</label>
+//           <input type="text" name="username" value={this.username} onChange={this.handleChange}/>
+//         </div>
+//         <div>
+//           <label>password</label>
+//           <input type="text" name="password" value={this.password} onChange={this.handleChange}/>
+//         </div>
+//         <button type="submit">Submit</button>
+//        </form>
+//       </>
+//     )
+//   }
+// }
+// function Example(){
+  
+
+//   const [data,setData] = useState(
+//     {username:'',password:''}
+//   )
+
+//   const handleChange = (e) => {
+//     const target = e.target;
+// 		setData({ 
+//       ...data, 
+//       [target.name]:target.value
+//     });
+//   }
+
+//   const handleReset = () => {
+//     setData({
+//       usermame:'',
+//       password:''
+//     })
+//   }
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setData(data)
+//     console.log(setData(data.username))
+//   }
+
+//   return(
+//     <>
+//      <form onSubmit={handleSubmit}>
+//        <div>
+//         <label>username</label>
+//         <input type="text" name="username" value={data.username} onChange={handleChange}/>
+//        </div>
+//        <div>
+//         <label>password</label>
+//         <input type="text" name="password" value={data.password} onChange={handleChange}/>
+//        </div>
+//        <button type="reset" onClick={handleReset}>Reset</button>
+//        <button type="submit">Submit</button>
+//        {data.username}
+//        {data.password}
+//      </form>
+//     </>
+//   )
+// }
+
+// example 34 => conext api 
+// // reducer 
+// const counterReducer = (state,action) => {
+//   switch(action.type){
+//     case 'INCREMENT':return state + 1;
+//     case 'DECREMENT':return state - 1;
+//     default:return state;
+//   }
+// }
+
+// // Context 
+// const CounterContext = createContext();
+
+// // Provider
+// function Example({children}){
+//   const [state,dispatch] = useReducer(counterReducer,0)
+//   return(
+//     <CounterContext.Provider value={{state,dispatch}}>
+//       {children}
+//     </CounterContext.Provider>
+//   )
+// }
+
+// example 33 => how to filter an array of object 
+// function Example(){
+//   const users = [
+//     {id:1,name:'nitesh',status:'inactive'},
+//     {id:2,name:'sameet',status:'active'},
+//     {id:3,name:'urvashi',status:'active'},
+//     {id:4,name:'arvind',status:'active'},
+//     {id:5,name:'manisha',status:'inactive'},
+//   ]
+// const filtered_users_active = users.filter((val) => val.status ==='active');
+// const filtered_users_inactive = users.filter((val) => val.status ==='inactive');
+// return(
+//   <>
+//    <div>
+//     <h3>Active users</h3>
+//     {filtered_users_active.map((item) =>{
+//       return(
+//         <div key={item.id}>
+//           <h3>{item.name}</h3>
+//           <p>{item.status}</p>
+//         </div>
+//       )
+//     })}
+//     <hr/>
+//     <h3>Inactive users</h3>
+//     {filtered_users_inactive.map((item) =>{
+//       return(
+//         <div key={item.id}>
+//           <h3>{item.name}</h3>
+//           <p>{item.status}</p>
+//         </div>
+//       )
+//     })}
+//    </div>
+//   </>
+// )
+// }
+
+// example 32 => how to filter an array of object 
+// function Example(){
+
+//   const employees= [
+//     {
+//       id:1,name:'nitesh',age:34,department:'front-end dev'
+//     },
+//     {
+//       id:2,name:'sameet',age:41,department:'field service engineering'
+//     },
+//     {
+//       id:3,name:'urvashi',age:65,department:'housewife'
+//     },
+//     {
+//       id:4,name:'arvind',age:68,department:'ladies tailor'
+//     },
+//     {
+//       id:5,name:'manisha',age:41,department:'account assistant'
+//     },
+//   ]
+
+//   const [emps,setEmps] = useState(employees);
+  
+//   return(
+//     <>
+//     <ul>
+//       {emps.map((emp) => {
+//         const {name,department,id} = emp;
+//         return(
+//         <li key={id}> 
+//           <div>
+//             Name: <strong>{name}</strong>
+//           </div>
+//           <div>
+//             Department <strong>{department}</strong>
+//           </div>
+//         </li>
+//         )
+//       })}
+      
+//       </ul>
+//     </>
+//   )
+// }
 
 // example 31 => fetch data on button click
 // function Example(){
