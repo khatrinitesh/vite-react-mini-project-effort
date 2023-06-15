@@ -22,24 +22,185 @@ export default function AssignmentOne() {
   )
 }
 
-// example 44 => inline stying object
-function Example(){
-  const myComponentStyle = {
-    height: '200px',
-    width: '200px',
-    background: 'goldenrod',
-    textAlign: 'center'
+// example 46 => how to iterate list keys 
+// function Example(){
+//   const employees = [
+//     {id: 1, name: 'Alice', country: 'Austria'},
+//     {id: 2, name: 'Bob', country: 'Belgium'},
+//     {id: 3, name: 'Carl', country: 'Canada'},
+//     {id: 4, name: 'Dean', country: 'Denmark'},
+//     {id: 5, name: 'Ethan', country: 'Egypt'},
+//   ];
+//   return(
+//     <>
+//      {employees.map(({id,name,country}) => {
+//       return(
+//         <div key={id}>
+//           <h3>{name}</h3>
+//           <p>{country}</p>
+//         </div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+// function Example(){
+//   const employees = [
+//     {id: 1, name: 'Alice', country: 'Austria'},
+//     {id: 2, name: 'Bob', country: 'Belgium'},
+//     {id: 3, name: 'Carl', country: 'Canada'},
+//     {id: 4, name: 'Dean', country: 'Denmark'},
+//     {id: 5, name: 'Ethan', country: 'Egypt'},
+//   ];
 
-}
+//   const results = []
+
+//   for(const emp of employees){
+//     results.push(
+//       <div key={emp.id}>
+//         <h3>{emp.name}</h3>
+//         <p>{emp.country}</p>
+//       </div>
+//     )
+//   }
+
+//   return(
+//     <>
+//      {results}
+//     </>
+//   )
+// }
+
+// example 45 => how to calculator add minus useMemo
+// function Example(){
+//   const [num1,setNum1]  = useState(0)
+//   const [num2,setNum2]  = useState(0)
+
+//   const add = (a,b) => {
+//     return parseInt(a) + parseInt(b)
+//   }
+//   const minus = (a,b) => {
+//     return parseInt(a) - parseInt(b)
+//   }
+
+//   const calc1 = useMemo(() => {
+//     return add(num1,num2)
+//   },[num1,num2])
+//   const calc2 = useMemo(() => {
+//     return minus(num1,num2)
+//   },[num1,num2])
+
+//   const handleChangeOne = (e) => {
+//     e.preventDefault();
+//     setNum1(e.target.value)
+//   }
+//   const handleChangeTwo = (e) => {
+//     e.preventDefault();
+//     setNum2(e.target.value)
+//   }
+//   return(
+//     <>
+//      <div>
+//       <input type="text" value={num1} onChange={handleChangeOne}/>
+//       <input type="text" value={num2} onChange={handleChangeTwo}/>
+//       <br/>
+//       {calc1}
+//       <br/>
+//       {calc2}
+//      </div>
+//     </>
+//   )
+// }
+
+// example 44 => inline stying object
+// function Example(){
+//   const myComponentStyle = {
+//     height: '200px',
+//     width: '200px',
+//     background: 'goldenrod',
+//     textAlign: 'center'
+
+// }
+//   return(
+//     <>
+//      <h1 style={myComponentStyle}>Heading title</h1>
+//      <h1 className='my-component-style'>Heading title</h1>
+//     </>
+//   )
+// }
+
+// example 44 => how to use callback
+function Example(){
+
+  const handleClick  = useCallback(() =>{
+    console.log('nitesh khatri')
+  })
   return(
     <>
-     <h1 style={myComponentStyle}>Heading title</h1>
-     <h1 className='my-component-style'>Heading title</h1>
+     <ButtonWrapper onClick={handleClick}/>
     </>
   )
 }
+function ButtonWrapper ({onClick}) {
+  return(
+    <> 
+    <button onClick={onClick}>I am a child</button>
+    </>
+  )
+}
+// function Example(){
+//   const [count,setCount] = useState(0)
+
+//   const handleCountInc = useCallback(() => {
+//     setCount(count => count + 1)
+//   },[])
+//   const handleCountDec = useCallback(() => {
+//     setCount(count => count - 1)
+//   },[])
+//   return(
+//     <>
+//      {count}
+//      <button onClick={handleCountInc}>Click count increment</button>
+//      <button onClick={handleCountDec}>Click count decrement</button>
+//     </>
+//   )
+// }
 
 // example 43 => how to pass props
+// function Example(){
+//   return(
+//     <>
+//     <Parent>
+//       <ChildA>
+//         <ChildB user="nitesh khatri"/>
+//       </ChildA>
+//     </Parent>
+//     </>
+//   )
+// }
+// const Parent = ({children}) => {
+//   return(
+//     <>
+//     <h3>Parent component</h3>
+//     {children}
+//     </>
+//   )
+// }
+// const ChildA = ({children}) => {
+//   return(
+//     <>
+//     <h3>Child A</h3>
+//     {children}
+//     </>
+//   )
+// }
+// const ChildB = ({user}) => {
+//   return(
+//     <>
+//     <h3>Child B {user}</h3>
+//     </>
+//   )
+// }
 // function Example(){
 
 //   const admin = {name:'nitesh',age:34}
@@ -1260,6 +1421,39 @@ function Example(){
 // }
 
 // example 9 
+// let context = createContext();
+// function Example(){
+
+//   const [fname,setFname] = useState('nitesh');
+//   const [lname,setLname] = useState('khatri');
+
+
+//   return(
+//     <context.Provider value={{fname,lname}}>
+//       <ChildA/>
+//     </context.Provider>
+//   )
+// }
+// function ChildA(){
+//   return(
+//     <>
+//      <h3>Child A</h3>
+//      <p>
+//       Duis esse mollit mollit ex consectetur amet adipisicing esse in fugiat esse. Amet ex nostrud sit ad. Magna ex reprehenderit quis pariatur amet ea nisi nisi deserunt amet non deserunt. Ipsum velit sit labore voluptate culpa velit officia pariatur. Nostrud laborum proident tempor culpa elit commodo occaecat do sit. Fugiat et enim laborum nostrud cillum occaecat occaecat deserunt ad voluptate do aliqua.
+//      </p>
+//      <hr/>
+//      <ChildB/>
+//     </>
+//   )
+// }
+// function ChildB(){
+//   const {fname,lname} = useContext(context)
+//   return(
+//     <>
+//      <h3>Fullname: {fname} - {lname}</h3>
+//     </>
+//   )
+// }
 // let context = createContext();
 // function Example(){
 //     const [fname,setFname] = useState('nitesh')
