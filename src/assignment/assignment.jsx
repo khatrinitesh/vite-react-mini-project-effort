@@ -7,11 +7,12 @@ import React,{ useState,useEffect,useCallback ,useMemo, createContext, useContex
 //     Position,
 //   } from "@blueprintjs/core";
   import './custom.css';
-import { ImageSearch } from '@mui/icons-material';
+import { ImageSearch, SettingsSystemDaydreamRounded } from '@mui/icons-material';
 import { functionsIn, parseInt } from 'lodash';
 import "bootstrap/dist/css/bootstrap.css";
 import { render } from 'react-dom';
 import './custom.css'
+import axios from 'axios';
 
 
 export default function AssignmentOne() {
@@ -21,6 +22,161 @@ export default function AssignmentOne() {
     </>
   )
 }
+
+// example 50 => lifecycle axios
+function Example(){
+  
+
+  const [state,setState] = useState([])
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/todos').then((example) => {
+      console.log('example',example)
+      if(example.status === 200){
+        setState(example.data)
+      }
+      else{
+        console.log('no data')
+      }
+    }).catch(error => {
+      console.log(error)
+    })
+
+    // fetch('https://jsonplaceholder.typicode.com/todos')
+    // .then((res) => res.json())
+    // .then((data) => setState(data))
+    // alert('hello how are you')
+  },[])
+  return(
+     <>
+      <h2>LifeCycle 2</h2>
+      <table className="table">
+        <thead>
+        <tr>
+          <th>Customer Code</th>
+          <th>Customer Name</th>
+        </tr>
+        </thead>
+        <tbody>
+          {state.map((val) => {
+            return(
+              <tr>
+               <td align='center'>{val.id}</td>
+               <td>{val.title}</td>
+              </tr>
+            )
+          })}
+          </tbody>
+      </table>
+     </>
+  )
+}
+
+// example 49 => lifeCycle 
+// function Example(){
+
+//   const [inc,setInc] = useState(0);
+//   const [dec,setDec] = useState(0);
+
+//   useEffect(() => {
+//       console.log('I am increment')
+//   },[inc])
+//   useEffect(() => {
+//     console.log('I am decrement')
+// },[dec])
+// useEffect(() => {
+//   console.log('i am call on every render and update')
+// })
+
+// const btnInc = () => {
+//   setInc(inc => inc + 1)
+// }
+// const btnDec = () => {
+//   setDec(dec => dec - 1)
+// }
+//   return(
+//     <>
+//     {inc} - {dec}
+//      <button onClick={btnInc}>+</button>
+//      <button onClick={btnDec}>-</button>
+//     </>
+//   )
+// }
+
+// example 48 => hooks array useState with array
+// function Example(){
+//   const [state,setState] = useState([]);
+//   const [arrArray,setArrarray] = useState([]);
+
+//   const submit = (e) => {
+//     e.preventDefault();
+//     setArrarray(prev => [...prev,state])
+//     console.log('state',state)
+//   }
+
+//   const onChange = (e) => {
+//     e.preventDefault();
+//     console.log('onChange',e.target.value)
+//     setState(e.target.value)
+//   }
+
+//   const btnDel = (index) => {
+//     arrArray.splice(index,1);
+//     setArrarray([...arrArray])
+//   }
+//   return(
+//     <>
+//      <form onSubmit={submit}>
+//       <input type='text' onChange={onChange}/>
+//       <button type='submit'>Add Item</button>
+//       <ul>
+//          {arrArray.map((val,index) => {
+//           return(
+//             <li key={index}>{val} <button onClick={() => btnDel(index)}>&times;</button></li>
+//           )
+//          })}
+//       </ul>
+//      </form>
+//     </>
+//   )
+// }
+
+// example 47 => useState with object lesson
+// function Example(){
+//   const [name,setName] = useState({
+//     fname:'',
+//     lname:''
+//   });
+
+//   const submit = (e) => {
+//     e.preventDefault();
+//     console.log('Submit',{...name})
+//   }
+
+//   const onChangeSetData = (e) => {
+//     e.preventDefault()
+//     setName({...name,fname:e.target.value})
+//   }
+//   const onChangeSetData2 = (e) => {
+//     e.preventDefault()
+//     setName({...name,lname:e.target.value})
+//   }
+//   return(
+//     <>
+//       <form onSubmit={submit}>
+//         <label>firstname</label>
+//         <input type="text" onChange={onChangeSetData}/>
+//         <br/>
+//         <label>lastname</label>
+//         <input type="text" onChange={onChangeSetData2}/>
+//         <div>{JSON.stringify(name)}</div>
+//         <button type="submit">Submit</button>
+//       </form>
+//       {name.fname}
+//       <br/>
+//       {name.lname}
+//       </>
+//   )
+// }
 
 // example 46 => how to iterate list keys 
 // function Example(){
@@ -130,24 +286,24 @@ export default function AssignmentOne() {
 // }
 
 // example 44 => how to use callback
-function Example(){
+// function Example(){
 
-  const handleClick  = useCallback(() =>{
-    console.log('nitesh khatri')
-  })
-  return(
-    <>
-     <ButtonWrapper onClick={handleClick}/>
-    </>
-  )
-}
-function ButtonWrapper ({onClick}) {
-  return(
-    <> 
-    <button onClick={onClick}>I am a child</button>
-    </>
-  )
-}
+//   const handleClick  = useCallback(() =>{
+//     console.log('nitesh khatri')
+//   })
+//   return(
+//     <>
+//      <ButtonWrapper onClick={handleClick}/>
+//     </>
+//   )
+// }
+// function ButtonWrapper ({onClick}) {
+//   return(
+//     <> 
+//     <button onClick={onClick}>I am a child</button>
+//     </>
+//   )
+// }
 // function Example(){
 //   const [count,setCount] = useState(0)
 
