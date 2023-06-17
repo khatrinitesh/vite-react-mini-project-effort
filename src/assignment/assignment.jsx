@@ -358,6 +358,132 @@ function Example(){
 //     </>
 //   )
 // }
+// example 46 => how to iterate list keys 
+// function Example(){
+//   const employees = [
+//     {id: 1, name: 'Alice', country: 'Austria'},
+//     {id: 2, name: 'Bob', country: 'Belgium'},
+//     {id: 3, name: 'Carl', country: 'Canada'},
+//     {id: 4, name: 'Dean', country: 'Denmark'},
+//     {id: 5, name: 'Ethan', country: 'Egypt'},
+//   ];
+//   return(
+//     <>
+//      {employees.map(({id,name,country}) => {
+//       return(
+//         <div key={id}>
+//           <h3>{name}</h3>
+//           <p>{country}</p>
+//         </div>
+//       )
+//      })}
+//     </>
+//   )
+// }
+// function Example(){
+//   const employees = [
+//     {id: 1, name: 'Alice', country: 'Austria'},
+//     {id: 2, name: 'Bob', country: 'Belgium'},
+//     {id: 3, name: 'Carl', country: 'Canada'},
+//     {id: 4, name: 'Dean', country: 'Denmark'},
+//     {id: 5, name: 'Ethan', country: 'Egypt'},
+//   ];
+
+//   const results = []
+
+//   for(const emp of employees){
+//     results.push(
+//       <div key={emp.id}>
+//         <h3>{emp.name}</h3>
+//         <p>{emp.country}</p>
+//       </div>
+//     )
+//   }
+
+//   return(
+//     <>
+//      {results}
+//     </>
+//   )
+// }
+
+// example 45 => how to calculator add minus useMemo
+// function Example(){
+//   const [num1,setNum1]  = useState(0)
+//   const [num2,setNum2]  = useState(0)
+
+//   const add = (a,b) => {
+//     return parseInt(a) + parseInt(b)
+//   }
+//   const minus = (a,b) => {
+//     return parseInt(a) - parseInt(b)
+//   }
+
+//   const calc1 = useMemo(() => {
+//     return add(num1,num2)
+//   },[num1,num2])
+//   const calc2 = useMemo(() => {
+//     return minus(num1,num2)
+//   },[num1,num2])
+
+//   const handleChangeOne = (e) => {
+//     e.preventDefault();
+//     setNum1(e.target.value)
+//   }
+//   const handleChangeTwo = (e) => {
+//     e.preventDefault();
+//     setNum2(e.target.value)
+//   }
+//   return(
+//     <>
+//      <div>
+//       <input type="text" value={num1} onChange={handleChangeOne}/>
+//       <input type="text" value={num2} onChange={handleChangeTwo}/>
+//       <br/>
+//       {calc1}
+//       <br/>
+//       {calc2}
+//      </div>
+//     </>
+//   )
+// }
+
+// example 44 => inline stying object
+// function Example(){
+//   const myComponentStyle = {
+//     height: '200px',
+//     width: '200px',
+//     background: 'goldenrod',
+//     textAlign: 'center'
+
+// }
+//   return(
+//     <>
+//      <h1 style={myComponentStyle}>Heading title</h1>
+//      <h1 className='my-component-style'>Heading title</h1>
+//     </>
+//   )
+// }
+
+// example 44 => how to use callback
+function Example(){
+
+  const handleClick  = useCallback(() =>{
+    console.log('nitesh khatri')
+  })
+  return(
+    <>
+     <ButtonWrapper onClick={handleClick}/>
+    </>
+  )
+}
+function ButtonWrapper ({onClick}) {
+  return(
+    <> 
+    <button onClick={onClick}>I am a child</button>
+    </>
+  )
+}
 // function Example(){
 //   const [count,setCount] = useState(0)
 
