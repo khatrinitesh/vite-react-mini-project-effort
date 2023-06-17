@@ -23,53 +23,54 @@ export default function AssignmentOne() {
   )
 }
 
+
 // example 50 => lifecycle axios
-function Example(){
+// function Example(){
   
 
-  const [state,setState] = useState([])
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/todos').then((example) => {
-      console.log('example',example)
-      if(example.status === 200){
-        setState(example.data)
-      }
-      else{
-        console.log('no data')
-      }
-    }).catch(error => {
-      console.log(error)
-    })
+//   const [state,setState] = useState([])
+//   useEffect(() => {
+//     axios.get('https://jsonplaceholder.typicode.com/todos').then((example) => {
+//       console.log('example',example)
+//       if(example.status === 200){ 
+//         setState(example.data)
+//       }
+//       else{
+//         console.log('no data')
+//       }
+//     }).catch(error => {
+//       console.log(error)
+//     })
 
-    // fetch('https://jsonplaceholder.typicode.com/todos')
-    // .then((res) => res.json())
-    // .then((data) => setState(data))
-    // alert('hello how are you')
-  },[])
-  return(
-     <>
-      <h2>LifeCycle 2</h2>
-      <table className="table">
-        <thead>
-        <tr>
-          <th>Customer Code</th>
-          <th>Customer Name</th>
-        </tr>
-        </thead>
-        <tbody>
-          {state.map((val) => {
-            return(
-              <tr>
-               <td align='center'>{val.id}</td>
-               <td>{val.title}</td>
-              </tr>
-            )
-          })}
-          </tbody>
-      </table>
-     </>
-  )
-}
+//     // fetch('https://jsonplaceholder.typicode.com/todos')
+//     // .then((res) => res.json())
+//     // .then((data) => setState(data))
+//     // alert('hello how are you')
+//   },[])
+//   return(
+//      <>
+//       <h2>LifeCycle 2</h2>
+//       <table className="table">
+//         <thead>
+//         <tr>
+//           <th>Customer Code</th>
+//           <th>Customer Name</th>
+//         </tr>
+//         </thead>
+//         <tbody>
+//           {state.map((val) => {
+//             return(
+//               <tr>
+//                <td align='center'>{val.id}</td>
+//                <td>{val.title}</td>
+//               </tr>
+//             )
+//           })}
+//           </tbody>
+//       </table>
+//      </>
+//   )
+// }
 
 // example 49 => lifeCycle 
 // function Example(){
@@ -179,6 +180,60 @@ function Example(){
 // }
 
 // example 46 => how to iterate list keys 
+function Example(){
+  const employees = [
+    {id: 1, name: 'Alice', country: 'Austria'},
+    {id: 2, name: 'Bob', country: 'Belgium'},
+    {id: 3, name: 'Carl', country: 'Canada'},
+    {id: 4, name: 'Dean', country: 'Denmark'},
+    {id: 5, name: 'Ethan', country: 'Egypt'},
+  ];
+
+  const [list,setList] = useState(employees)
+
+  const btnDel  =(id) => {
+    const newList = list.filter((val) => val.id !== id)
+    setList(newList)
+  }
+
+  return(
+    <>
+     {list.map((val) => {
+      return(
+        <div key={val.id}>
+          <h3>{val.name}</h3>
+          <p>{val.country}</p>
+          <button onClick={() => btnDel(val.id)}>&times;</button>
+        </div>
+      )
+     })}
+    </>
+  )
+}
+// function Example(){
+//     const employees = [
+//     {id: 1, name: 'Alice', country: 'Austria'},
+//     {id: 2, name: 'Bob', country: 'Belgium'},
+//     {id: 3, name: 'Carl', country: 'Canada'},
+//     {id: 4, name: 'Dean', country: 'Denmark'},
+//     {id: 5, name: 'Ethan', country: 'Egypt'},
+//   ];
+
+//   const result = []
+//   for (const val of employees){
+//     result.push(
+//       <div key={val.id}>
+//         <h3>{val.name}</h3>
+//         <p>{val.country}</p>
+//       </div>
+//     )
+//   }
+//   return(
+//     <>
+//      {result}
+//     </>
+//   )
+// }
 // function Example(){
 //   const employees = [
 //     {id: 1, name: 'Alice', country: 'Austria'},
