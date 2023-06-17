@@ -23,7 +23,6 @@ export default function AssignmentOne() {
   )
 }
 
-
 // example 50 => lifecycle axios
 // function Example(){
   
