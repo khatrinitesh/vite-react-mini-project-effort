@@ -23,6 +23,104 @@ export default function AssignmentOne() {
   )
 }
 
+// example 52 => how to checkbed
+
+
+function Example(){
+  const [isChecked, setIsChecked] = useState(true);
+
+  const handleChange =(e) => {
+    e.preventDefault();
+    setIsChecked(e.target.checked)
+    console.log(setIsChecked(e.currentTarget.checked))
+  } 
+
+  return(
+    <>
+     <input type="checkbox" onChange={handleChange} checked={isChecked}/>
+     {isChecked ? 'Checked' : 'Not checked'}
+    </>
+  )
+}
+
+// example 51 => how to generate dynamic form using JSON with react
+// const data  = {
+//   "form":{
+//     "sections":[
+//       {
+//         "order":1,
+//         "section_title":"Basic information",
+//         "fields":[
+//           {
+//             "name":"name",
+//             "label":"Name",
+//             "required":true,
+//             "data_type":"Integer",
+//             "html_element":"textbox"
+//           },
+//           {
+//             "name":"email",
+//             "label":"Email",
+//             "required":false,
+//             "data_type":"String",
+//             "html_element":"email"
+//           },
+//           {
+//             "name":"phone",
+//             "label":"Phone",
+//             "required":true,
+//             "data_type":"number",
+//             "html_element":"textbox"
+//           },
+//           {
+//             "name":"age",
+//             "label":"Age",
+//             "hidden":false,
+//             "data_type":"number",
+//             "html_element":"number"
+//           },
+//           {
+//             "name":"photo",
+//             "label":"Photo",
+//             "hidden":false,
+//             "data_type":"Image",
+//             "html_element":"file"
+//           },
+//         ]
+//       }
+//     ]
+//   }
+// }
+// const onSubmit = (e) => {
+//   e.preventDefault();
+//   console.log(formData.name)
+// }
+// function Example(){
+//   return(
+//     <>
+//     <form onSubmit={onSubmit}>
+//      {data.form.sections.map(formData => {
+//         return(
+//           <div>
+//             <h1>{formData.section_title}</h1>
+//             {formData.fields.map((val) => {
+//               return(
+//                 <>
+//                  <h2>{val.name}</h2>
+//                  <label>{val.label}</label>
+//                  <input type={val.html_element} required={val.required} name={val.name} datatype={val.data_type} />
+//                  <button type="submit">Submit</button>
+//                 </>
+//               )
+//             })}
+//           </div>
+//         )
+//      })}
+//      </form>
+//     </>
+//   )
+// }
+
 // example 50 => lifecycle axios
 // function Example(){
   
@@ -179,36 +277,36 @@ export default function AssignmentOne() {
 // }
 
 // example 46 => how to iterate list keys 
-function Example(){
-  const employees = [
-    {id: 1, name: 'Alice', country: 'Austria'},
-    {id: 2, name: 'Bob', country: 'Belgium'},
-    {id: 3, name: 'Carl', country: 'Canada'},
-    {id: 4, name: 'Dean', country: 'Denmark'},
-    {id: 5, name: 'Ethan', country: 'Egypt'},
-  ];
+// function Example(){
+//   const employees = [
+//     {id: 1, name: 'Alice', country: 'Austria'},
+//     {id: 2, name: 'Bob', country: 'Belgium'},
+//     {id: 3, name: 'Carl', country: 'Canada'},
+//     {id: 4, name: 'Dean', country: 'Denmark'},
+//     {id: 5, name: 'Ethan', country: 'Egypt'},
+//   ];
 
-  const [list,setList] = useState(employees)
+//   const [list,setList] = useState(employees)
 
-  const btnDel  =(id) => {
-    const newList = list.filter((val) => val.id !== id)
-    setList(newList)
-  }
+//   const btnDel  =(id) => {
+//     const newList = list.filter((val) => val.id !== id)
+//     setList(newList)
+//   }
 
-  return(
-    <>
-     {list.map((val) => {
-      return(
-        <div key={val.id}>
-          <h3>{val.name}</h3>
-          <p>{val.country}</p>
-          <button onClick={() => btnDel(val.id)}>&times;</button>
-        </div>
-      )
-     })}
-    </>
-  )
-}
+//   return(
+//     <>
+//      {list.map((val) => {
+//       return(
+//         <div key={val.id}>
+//           <h3>{val.name}</h3>
+//           <p>{val.country}</p>
+//           <button onClick={() => btnDel(val.id)}>&times;</button>
+//         </div>
+//       )
+//      })}
+//     </>
+//   )
+// }
 // function Example(){
 //     const employees = [
 //     {id: 1, name: 'Alice', country: 'Austria'},
@@ -466,24 +564,24 @@ function Example(){
 // }
 
 // example 44 => how to use callback
-function Example(){
+// function Example(){
 
-  const handleClick  = useCallback(() =>{
-    console.log('nitesh khatri')
-  })
-  return(
-    <>
-     <ButtonWrapper onClick={handleClick}/>
-    </>
-  )
-}
-function ButtonWrapper ({onClick}) {
-  return(
-    <> 
-    <button onClick={onClick}>I am a child</button>
-    </>
-  )
-}
+//   const handleClick  = useCallback(() =>{
+//     console.log('nitesh khatri')
+//   })
+//   return(
+//     <>
+//      <ButtonWrapper onClick={handleClick}/>
+//     </>
+//   )
+// }
+// function ButtonWrapper ({onClick}) {
+//   return(
+//     <> 
+//     <button onClick={onClick}>I am a child</button>
+//     </>
+//   )
+// }
 // function Example(){
 //   const [count,setCount] = useState(0)
 
