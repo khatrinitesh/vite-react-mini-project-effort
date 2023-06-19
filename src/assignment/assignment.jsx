@@ -14,7 +14,6 @@ import { render } from 'react-dom';
 import './custom.css'
 import axios from 'axios';
 
-
 export default function AssignmentOne() {
   return (
     <>
@@ -23,25 +22,115 @@ export default function AssignmentOne() {
   )
 }
 
-// example 52 => how to checkbed
-
-
+// example 54 => Higher order component
 function Example(){
-  const [isChecked, setIsChecked] = useState(true);
-
-  const handleChange =(e) => {
-    e.preventDefault();
-    setIsChecked(e.target.checked)
-    console.log(setIsChecked(e.currentTarget.checked))
-  } 
-
   return(
     <>
-     <input type="checkbox" onChange={handleChange} checked={isChecked}/>
-     {isChecked ? 'Checked' : 'Not checked'}
+     <Stu1/>
+     <Stu2/>
     </>
   )
 }
+const Higherordercom = (Student) => {
+  const Highordercominner = () => {
+    const [num,setNum] = useState(0)
+    const handleEvent = () => {
+      setNum(num + 10)
+    }
+    return(
+      <Student num={num} handleEvent={handleEvent}/>
+    )
+  }
+  return Highordercominner;
+}
+const Stu1 = (props) => {
+  return(
+    <>
+     <h3>{props.name}</h3>
+     <button onClick={() => props.handleEvent()}>Count Increment</button>
+    </>
+  )
+}
+const Stu2 = (props) => {
+  return(
+    <>
+     <h3>{props.name}</h3>
+     <button onClick={props.handleEvent}>Count Increment</button>
+    </>
+  )
+}
+
+// example 53 => contexg api 
+// function Example(){
+
+//   return(
+//     <>
+//      <Main/>
+//     </>
+//   )
+// }
+
+// export const AppContext = createContext(null);
+// const Main = () => {
+//   const [name,setName] = useState('nitesh')
+//   const [count,setCount] = useState(0);
+
+//   return(
+//     <>
+//     <AppContext.Provider value={{name,setName,count,setCount}}>
+//       <A/>
+//     </AppContext.Provider>
+//     </>
+//   )
+// }
+// const A = () => {
+//   const {name,count} = useContext(AppContext)
+//   return(
+//     <>
+//     <h1>A parent</h1>
+//     {count} - {name}
+//     <B/>
+//     </>
+//   )
+// }
+// const B = () => {
+//   const {name,count} = useContext(AppContext)
+//   return(
+//     <>
+//      <h1>B Child</h1>
+//      {count} - {name}
+//      <C/>
+//     </>
+//   )
+// }
+
+// const C = () => {
+//   const {name,setName,count,setCount} = useContext(AppContext)
+//   return(
+//     <>
+//      <h1>C Child</h1>
+//      <button onClick={() => setCount(count + 5)}>Increment</button>
+//      <h1>{count}</h1>
+//     </>
+//   )
+// }
+// example 52 => how to checkbed
+// function Example(){
+//   const [isChecked, setIsChecked] = useState(true);
+
+//   const handleChange =(e) => {
+//     e.preventDefault();
+//     setIsChecked(e.target.checked)
+//     console.log(setIsChecked(e.currentTarget.checked))
+//   } 
+
+//   return(
+//     <>
+//      <input type="checkbox" onChange={handleChange} checked={isChecked}/>
+//      {isChecked ? 'Checked' : 'Not checked'}
+//     </>
+//   )
+// }
 
 // example 51 => how to generate dynamic form using JSON with react
 // const data  = {
