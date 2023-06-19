@@ -22,43 +22,15 @@ export default function AssignmentOne() {
   )
 }
 
-// example 54 => Higher order component
+// example 54 => 
 function Example(){
   return(
     <>
-     <Stu1/>
-     <Stu2/>
+    itesh
     </>
   )
 }
-const Higherordercom = (Student) => {
-  const Highordercominner = () => {
-    const [num,setNum] = useState(0)
-    const handleEvent = () => {
-      setNum(num + 10)
-    }
-    return(
-      <Student num={num} handleEvent={handleEvent}/>
-    )
-  }
-  return Highordercominner;
-}
-const Stu1 = (props) => {
-  return(
-    <>
-     <h3>{props.name}</h3>
-     <button onClick={() => props.handleEvent()}>Count Increment</button>
-    </>
-  )
-}
-const Stu2 = (props) => {
-  return(
-    <>
-     <h3>{props.name}</h3>
-     <button onClick={props.handleEvent}>Count Increment</button>
-    </>
-  )
-}
+
 
 // example 53 => contexg api 
 // function Example(){

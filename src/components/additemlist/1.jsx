@@ -10,74 +10,76 @@ export default function AddArrayElementExmple() {
   )
 }
 
-const initialList = [
-  {
-    id:1,name:'nitesh',age:34
-  },
-  {
-    id:2,name:'urvashi',age:64
-  },
-  {
-    id:3,name:'arvind',age:68
-  },
-  {
-    id:4,name:'sameet',age:41
-  },
-]
 
 
-function Example(){
-  const [list,setList] = useState(initialList);
-  const [name,setName] = useState('');
-  const [age,setAge] = useState('');
+// const initialList = [
+//   {
+//     id:1,name:'nitesh',age:34
+//   },
+//   {
+//     id:2,name:'urvashi',age:64
+//   },
+//   {
+//     id:3,name:'arvind',age:68
+//   },
+//   {
+//     id:4,name:'sameet',age:41
+//   },
+// ]
 
-  const btnChange = (e) => {
-    e.preventDefault()
-    setName(e.target.value)
-  }
 
-  const btnAdd = () => {
-    const newList = list.concat({name,age,id:uuidv4()})
-    setList(newList)
-    setName('');
-    setAge('');
-  }
+// function Example(){
+//   const [list,setList] = useState(initialList);
+//   const [name,setName] = useState('');
+//   const [age,setAge] = useState('');
 
-  const btnDel = (id) => {
-    const newList = list.filter((val) => val.id !== id)
-    setList(newList)
-  }
+//   const btnChange = (e) => {
+//     e.preventDefault()
+//     setName(e.target.value)
+//   }
 
-  return(
-    <>
-     <AddItem handleAdd={btnAdd} handleChange={btnChange}/>
-     <List onDel={btnDel} list={list} />
-    </>
-  )
-}
+//   const btnAdd = () => {
+//     const newList = list.concat({name,age,id:uuidv4()})
+//     setList(newList)
+//     setName('');
+//     setAge('');
+//   }
 
-const AddItem = ({name,handleChange,handleAdd}) => {
-  return(
-    <>
-      <input type="text" value={name} onChange={handleChange}/>
-      <button onClick={handleAdd}>Add</button>
-    </>
-  )
-}
-const List = ({onDel,list})  => {
-  return(
-    <>
-     {list.map((val) => {
-      return(
-        <li key={val.id}>
-          <h3>{val.name}</h3>
-          <button onClick={() => onDel(val.id)}>&times;</button>
-        </li>
-      )
-     })}
-    </>
-  )
-}
+//   const btnDel = (id) => {
+//     const newList = list.filter((val) => val.id !== id)
+//     setList(newList)
+//   }
+
+//   return(
+//     <>
+//      <AddItem handleAdd={btnAdd} handleChange={btnChange}/>
+//      <List onDel={btnDel} list={list} />
+//     </>
+//   )
+// }
+
+// const AddItem = ({name,handleChange,handleAdd}) => {
+//   return(
+//     <>
+//       <input type="text" value={name} onChange={handleChange}/>
+//       <button onClick={handleAdd}>Add</button>
+//     </>
+//   )
+// }
+// const List = ({onDel,list})  => {
+//   return(
+//     <>
+//      {list.map((val) => {
+//       return(
+//         <li key={val.id}>
+//           <h3>{val.name}</h3>
+//           <button onClick={() => onDel(val.id)}>&times;</button>
+//         </li>
+//       )
+//      })}
+//     </>
+//   )
+// }
 
 
 

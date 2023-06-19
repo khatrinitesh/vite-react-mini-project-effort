@@ -1,8 +1,8 @@
 import React,{createContext,useContext, useEffect, useState} from 'react';
-import context from 'react-bootstrap/esm/AccordionContext';
+// import context from 'react-bootstrap/esm/AccordionContext';
 // import styled, { css } from "styled-components";
 import "bootstrap/dist/css/bootstrap.css";
-import ColorContext from './colorcontenxt';
+// import ColorContext from './colorcontenxt';
 
 export default function ContextExample() {
   return (
@@ -14,34 +14,64 @@ export default function ContextExample() {
   )
 }
 
+
+const ThemeContext = createContext('light');
 function Example(){
+
+  const [state,setState] = useState('dark');
   return(
     <>
-     <AppContextObject.Provider value={AppContextObject}>
-      {props.children}
-     </AppContextObject.Provider>
+    <ThemeContext.Provider value='dark'>
+     <Toolbar/>
+     </ThemeContext.Provider>
+    </>
+  )
+}
+function Toolbar(){
+  return(
+    <>
+     <ThemeButton/>
     </>
   )
 }
 
+function ThemeButton(){
+  const {contextType} = useContext(ThemeContext)
+  return(
+    <>
+     <button theme={contextType}>Click</button>
+    </>
+  )
+}
 
-function Parent(){
+// function Example(){
+//   return(
+//     <>
+//      <AppContextObject.Provider value={AppContextObject}>
+//       {props.children}
+//      </AppContextObject.Provider>
+//     </>
+//   )
+// }
+
+
+// function Parent(){
   
-  return(
-    <ColorContext.Provider value={colors}>
-      <Child/>
-    </ColorContext.Provider>
-  )
-}
+//   return(
+//     <ColorContext.Provider value={colors}>
+//       <Child/>
+//     </ColorContext.Provider>
+//   )
+// }
 
-function Child(){
-  const colors = useContext(ColorContext)
-  return(
-    <>
-      <p style={{backgroundColor:colors.blue}}>Child component</p>
-    </>
-  )
-}
+// function Child(){
+//   const colors = useContext(ColorContext)
+//   return(
+//     <>
+//       <p style={{backgroundColor:colors.blue}}>Child component</p>
+//     </>
+//   )
+// }
 
 
 // const Superb = createContext();
