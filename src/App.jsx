@@ -5,7 +5,10 @@ import React from 'react';
 // import CustomApp from '../src/github/fetchapirest/1/app';
 // import CustomApp from '../src/github/fetchapirest/2/app';
 // import CustomReduxApp from './redux/redux3/customredux';
-import CustomExample from '../src/github/seema/dynamicform/1';
+import CustomExample from '../src/project/project9/app';
+
+// import Counter from '../src/redux/redux4/app';
+
 
 function AppExample() {
   
@@ -16,6 +19,7 @@ function AppExample() {
      {/* <HOCExample/> */}
      {/* <CustomReduxApp/> */}
      <CustomExample/>
+     {/* <Counter/> */}
     </>
   )
 }
