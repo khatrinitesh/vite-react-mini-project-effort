@@ -10,67 +10,92 @@ export default function CrudExample() {
   )
 }
 
-function Example(){
 
-  const [task,setTask] = useState('')
-  const [todo,setTodo] = useState([])
-  const [editId,setEditId] = useState(0);
+class Example extends React.Component{
 
-  const btnAdd = () => {
-    if(!task == ''){
-      setTodo([...todo,{task,index:`${task}-${Date.now()}`}]);
-      setTask('');
-    }
-    if(editId){
-      const editTask = todo.find((i) => i.index === editId)
-      const updatedTasks = todo.map((t) => 
-        t.index === editTask.index ? t = {index:t.index,task} : {index:t.index,task:t.task})
-      setTodo(updatedTasks);
-      setEditId(0);
-      return;
+  constructor(props){
+    super(props)
+    this.state = {
+      word:'nitesh'
     }
   }
 
-  const btnEdit =(index) => {
-    const editTask = todo.find((i) => i.index === index);
-    setTodo(editTask.task)
-    setEditId(index)
+  handleChange = (e) => {
+    this.setState({
+      word:'sameet'
+    })
   }
-
-  const btnDel = (index) => {
-    const newTaskList = todo;
-    newTaskList.splice(index,1);
-    setTodo([...newTaskList])
+  render(){
+    return(
+      <>
+       <p>{this.state.word}</p>
+       <button onClick={this.handleChange}>Click change</button>
+      </>
+    )
   }
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setTask(e.target.value);
-  }
-
-  return(
-    <>
-    <h1 className='title'> Todo App </h1>
-    <input type='text' value={task} onChange={handleChange } />
-    <button onClick={btnAdd}> Add </button>
-    {todo.map((task) => {
-      return(
-        <Task btnDel={btnDel} btnEdit={btnEdit} task={task.task} index={task.index}/>
-      )
-    })}
-    </>
-  )
 }
 
-function Task({task,btnDel,btnEdit,index}) {
-  return(
-    <>
-     <h1>{task}</h1>
-     <button onClick={() => btnDel(index)}>Del</button>
-     <button onClick={() => btnEdit(index)}>Edit</button>
-    </>
-  )
-}
+// function Example(){
+
+//   const [task,setTask] = useState('')
+//   const [todo,setTodo] = useState([])
+//   const [editId,setEditId] = useState(0);
+
+//   const btnAdd = () => {
+//     if(!task == ''){
+//       setTodo([...todo,{task,index:`${task}-${Date.now()}`}]);
+//       setTask('');
+//     }
+//     if(editId){
+//       const editTask = todo.find((i) => i.index === editId)
+//       const updatedTasks = todo.map((t) => 
+//         t.index === editTask.index ? t = {index:t.index,task} : {index:t.index,task:t.task})
+//       setTodo(updatedTasks);
+//       setEditId(0);
+//       return;
+//     }
+//   }
+
+//   const btnEdit =(index) => {
+//     const editTask = todo.find((i) => i.index === index);
+//     setTodo(editTask.task)
+//     setEditId(index)
+//   }
+
+//   const btnDel = (index) => {
+//     const newTaskList = todo;
+//     newTaskList.splice(index,1);
+//     setTodo([...newTaskList])
+//   }
+
+//   const handleChange = (e) => {
+//     e.preventDefault();
+//     setTask(e.target.value);
+//   }
+
+//   return(
+//     <>
+//     <h1 className='title'> Todo App </h1>
+//     <input type='text' value={task} onChange={handleChange } />
+//     <button onClick={btnAdd}> Add </button>
+//     {todo.map((task) => {
+//       return(
+//         <Task btnDel={btnDel} btnEdit={btnEdit} task={task.task} index={task.index}/>
+//       )
+//     })}
+//     </>
+//   )
+// }
+
+// function Task({task,btnDel,btnEdit,index}) {
+//   return(
+//     <>
+//      <h1>{task}</h1>
+//      <button onClick={() => btnDel(index)}>Del</button>
+//      <button onClick={() => btnEdit(index)}>Edit</button>
+//     </>
+//   )
+// }
 
 
 // function Example(){

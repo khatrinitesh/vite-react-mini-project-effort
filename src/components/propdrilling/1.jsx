@@ -10,24 +10,45 @@ export default function PropDrillingExample() {
 }
 
 function Parent(){
-
-  function ClickAlert(){
-    console.log('click alert')
+  const handleClick = () => {
+    console.log('nitesh  khatri')
   }
-
   return(
     <>
-     <Child data='Click here' onChildClick={ClickAlert}/>
+     <Child data="click here" onClick={handleClick}/>
     </>
   )
 }
-const Child = ({data, onChildClick,children}) => {
+function Child({data,onClick}){
   return(
-    <div className='child_block'>
-     <button onClick={onChildClick}>{data}</button>
-    </div>
+    <>
+     <button onClick={onClick}>{data}</button>
+    </>
   )
 }
+
+// function Parent(){
+
+//   function ClickAlert(){
+//     console.log('click alert')
+//   }
+
+//   return(
+//     <>
+//      <Child data='Click here' onChildClick={ClickAlert}>
+//       nitesh khatri
+//       </Child>
+//     </>
+//   )
+// }
+// const Child = ({data, onChildClick,children}) => {
+//   return(
+//     <div className='child_block'>
+//      <button onClick={onChildClick}>{data}</button>
+//      {children}
+//     </div>
+//   )
+// }
 
 
 // function Example(){

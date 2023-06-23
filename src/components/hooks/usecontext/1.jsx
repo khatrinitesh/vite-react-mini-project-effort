@@ -14,35 +14,84 @@ export default function ContextExample() {
   )
 }
 
-
-const ThemeContext = createContext('light');
+export const MyContext = createContext();
 function Example(){
-
-  const [state,setState] = useState('dark');
+  const data = {name:"nitesh",age:34}
   return(
-    <>
-    <ThemeContext.Provider value='dark'>
-     <Toolbar/>
-     </ThemeContext.Provider>
-    </>
-  )
-}
-function Toolbar(){
-  return(
-    <>
-     <ThemeButton/>
-    </>
+    <MyContext.Provider value={data}>
+      <ChildComponent/>
+    </MyContext.Provider>
   )
 }
 
-function ThemeButton(){
-  const {contextType} = useContext(ThemeContext)
+function ChildComponent(){
+  const value = useContext(MyContext)
   return(
-    <>
-     <button theme={contextType}>Click</button>
-    </>
+    <div>
+      <h1>{value.name} {value.age}</h1>
+    </div>
   )
 }
+
+// export const MyContext = createContext();
+// function Example(){
+//   const data = {name:'nitesh',age:34}
+//   return(
+//     <MyContext.Provider value={data}>
+//      <ExampleOne/>
+//     </MyContext.Provider>
+//   )
+// }
+
+// function ExampleOne(){
+//   return(
+//     <>
+//      <ChildComponent/>
+//     </>
+//   )
+// }
+
+// function ChildComponent(){
+//   return(
+//     <MyContext.Consumer>
+//        {value => {
+//         return(
+//           <div>{value.name} - {value.age}</div>
+//         )
+//        }}
+//     </MyContext.Consumer>
+//   )
+// }
+
+
+// const ThemeContext = createContext('light');
+// function Example(){
+
+//   const [state,setState] = useState('dark');
+//   return(
+//     <>
+//     <ThemeContext.Provider value='dark'>
+//      <Toolbar/>
+//      </ThemeContext.Provider>
+//     </>
+//   )
+// }
+// function Toolbar(){
+//   return(
+//     <>
+//      <ThemeButton/>
+//     </>
+//   )
+// }
+
+// function ThemeButton(){
+//   const {contextType} = useContext(ThemeContext)
+//   return(
+//     <>
+//      <button theme={contextType}>Click</button>
+//     </>
+//   )
+// }
 
 // function Example(){
 //   return(

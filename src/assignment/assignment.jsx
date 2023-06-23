@@ -24,9 +24,56 @@ export default function AssignmentOne() {
 
 // example 54 => 
 function Example(){
+
+  const [tempList,setTempList] = useState([]);
+  const [data,setData] = useState(['nitesh','sameet','urvashi','arvind']);
+
+  const fetchData = () => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((res) => res.json( ))
+    .then((json) => setTempList(json))
+    .catch(e => {
+      console.log('error',e)
+    })
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[])
+
+  const btnAsc  =() => {
+    let data = [...tempList]
+    if(data.length > 0){
+      let result = data.sort((a,b) => a.title.localeCompare(b.title))
+      setTempList(result)
+    }
+  }
+
+  const btnDsc = () => {
+    let data = [...tempList]
+    if(data.length > 0){
+      let result = data.sort((a,b) => b.title.localeCompare(a.title))
+      setTempList(result)
+    }
+  }
   return(
     <>
-    itesh
+    {console.log('data',tempList)}
+    {tempList && tempList.length > 0 && tempList != undefined ? tempList.map((item,i) => {
+      return(
+        <div>{item.title}</div>
+      )
+    }) : 'no data'}
+    <div style={{margin:'20px'}}>
+      <button onClick={btnAsc}>Asc</button>
+      <button onClick={btnDsc}>Dsc</button>
+      <button onClick={fetchData}>Reset</button> 
+    </div>
+    {data.map((val) => {
+      return(
+        <div>{val}</div>
+      )
+    })}
     </>
   )
 }
