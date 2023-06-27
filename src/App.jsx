@@ -8,8 +8,9 @@ import React from 'react';
 // import ContextExample from './components/hooks/useContext/1';
 // import Counter from '../src/redux/redux4/app';
 // import AssignmentOne from './assignment/assignment';
-import CustomApp from './framework/tailwind/app';
-import '../public/assets/css/output.css'
+// import CustomApp from './framework/tailwind/app';
+// import '../public/assets/css/output.css'
+import CustomApp from './project/project10/app';
 
 function AppExample() {
   
