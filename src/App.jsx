@@ -12,7 +12,7 @@ import React from 'react';
 // import '../public/assets/css/output.css'
 // import CustomApp from './project/project13/app';
 // import CustomApp from './repository/datatable/1/app';
-import CustomApp from './repository/slideshow/3/app';
+import CustomApp from './repository/searchfilter/2/app';
 
 function AppExample() {
   
