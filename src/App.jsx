@@ -10,8 +10,9 @@ import React from 'react';
 // import AssignmentOne from './assignment/assignment';
 // import CustomApp from './framework/tailwind/app';
 // import '../public/assets/css/output.css'
-// import CustomApp from './components/router/router3/app';
-import CustomApp from './project/project12/app';
+// import CustomApp from './project/project13/app';
+// import CustomApp from './repository/datatable/1/app';
+import CustomApp from './repository/slideshow/3/app';
 
 function AppExample() {
   
